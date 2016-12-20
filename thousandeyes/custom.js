@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var width = $(window).width();
 	var routes = {};
 	var longLat = d3.geo.albers()
-		.translate([width*4/8, height/3])
+		.translate([width*3/8, height/3])
 		.scale(300000)
 		.rotate([122.4194, 0])
 		.center([0, 37.7749]);
