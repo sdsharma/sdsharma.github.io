@@ -159,7 +159,7 @@ nanoGALLERY v5.9.1 release notes.
     lazyBuild : 'none', lazyBuildTreshold : 150,
     debugMode: false,
     i18n : {
-      'breadcrumbHome' : 'Galleries', 'breadcrumbHome_FR' : 'Galeries',
+      'breadcrumbHome' : 'Albums', 'breadcrumbHome_FR' : 'Albums',
       'paginationPrevious' : 'Previous', 'paginationPrevious_FR' : 'Pr&eacute;c&eacute;dent', 'paginationPrevious_DE' : 'Zur&uuml;ck', 'paginationPrevious_IT' : 'Indietro',
       'paginationNext' : 'Next', 'paginationNext_FR' : 'Suivant', 'paginationNext_DE' : 'Weiter', 'paginationNext_IT' : 'Avanti',
       'thumbnailLabelItemsCountPart1' : '', //'| ',
