@@ -13,7 +13,7 @@
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
 	-o-box-sizing: content-box;
-	overflow: hidden;
+	/*overflow: hidden;*/
   visibility: visible;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
