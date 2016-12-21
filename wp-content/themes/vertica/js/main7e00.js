@@ -24,7 +24,7 @@ $(".timeline-bg")[0]
     var sideWidth = $('.side-menu').outerWidth();
     var sideWidthClose = '-' + sideWidth + 'px';
     $('.side-menu').animate({'left': sideWidthClose}, 600, 'easeOutCubic');
-    preventDefault();
+    // preventDefault();
   });
 
   //Smooth Scroll on anchor links
@@ -44,25 +44,6 @@ $(".timeline-bg")[0]
   //Bootstrap Scroll Spy
   $('[data-spy="scroll"]').each(function () {
     var $spy = $(this).scrollspy('refresh');
-  });  
-
-  //Bxslider -see options at http://bxslider.com/
-  $('.portfolio-itens').bxSlider({
-      slideWidth: 200,
-      minSlides: 1,
-      maxSlides: 4,
-      moveSlides: 1,
-      slideMargin: 5,
-      auto: false,
-      mode: 'horizontal',
-      useCSS: false,
-      speed: 900,
-      infiniteLoop: false,
-      hideControlOnEnd: true,
-      easing: 'easeOutElastic',
-      pager: false,
-      prevText: '<i class="fa fa-chevron-left"></i>',
-      nextText: '<i class="fa fa-chevron-right"></i>'
   });
 
   
@@ -78,41 +59,6 @@ $(".timeline-bg")[0]
     $(this).find('.hover-bg-wrapper').fadeOut(200);
     $(this).find('.hover').fadeOut(200);
     $(this).find('p').removeClass('fadeInUp');
-  });
-
-  //Contact Form Validator and Ajax Sender
-  $("#contactForm").validate({
-    submitHandler: function(form) {
-      $.ajax({
-        type: "POST",
-        url: "php/contact-form.php",
-        data: {
-          "name": $("#contactForm #name").val(),
-          "email": $("#contactForm #email").val(),
-          "subject": $("#contactForm #subject").val(),
-          "message": $("#contactForm #message").val()
-        },
-        dataType: "json",
-        success: function (data) {
-          if (data.response == "success") {
-            $("#contactSuccess").fadeIn(300);
-            $("#contactError").addClass("hidden");
-
-            $("#contactForm #name, #contactForm #email, #contactForm #subject, #contactForm #message")
-              .val("")
-              .blur()
-              .closest(".control-group")
-              .removeClass("success")
-              .removeClass("error");              
-            
-          } else {
-            $("#contactError").fadeIn(300);
-            $("#contactSuccess").addClass("hidden");
-          }
-        }
-
-      });
-    }
   });
 
   //Modal for Contact Form
