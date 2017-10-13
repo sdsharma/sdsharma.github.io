@@ -26,8 +26,6 @@ setTimeout(function() {
     viewFactor: .3
 }), sr.reveal(".background"), sr.reveal(".skills"), sr.reveal(".experience", {
     viewFactor: .2
-}), sr.reveal(".featured-projects", {
-    viewFactor: .1
 }), sr.reveal(".other-projects", {
     viewFactor: .05
 })
