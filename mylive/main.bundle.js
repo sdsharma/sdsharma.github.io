@@ -7,6 +7,10 @@ var map = {
 	"./admin/admin.module": [
 		"../../../../../src/app/admin/admin.module.ts",
 		"admin.module"
+	],
+	"./new/new.module": [
+		"../../../../../src/app/new/new.module.ts",
+		"new.module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -106,14 +110,6 @@ var app_component_1 = __webpack_require__("../../../../../src/app/app.component.
 var app_routing_1 = __webpack_require__("../../../../../src/app/app.routing.ts");
 var shared_module_1 = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
 var login_component_1 = __webpack_require__("../../../../../src/app/login/login.component.ts");
-var business_component_1 = __webpack_require__("../../../../../src/app/business/business.component.ts");
-var sight_component_1 = __webpack_require__("../../../../../src/app/sight/sight.component.ts");
-var organization_component_1 = __webpack_require__("../../../../../src/app/organization/organization.component.ts");
-var viewsight_component_1 = __webpack_require__("../../../../../src/app/viewsight/viewsight.component.ts");
-var viewbusiness_component_1 = __webpack_require__("../../../../../src/app/viewbusiness/viewbusiness.component.ts");
-var vieworganization_component_1 = __webpack_require__("../../../../../src/app/vieworganization/vieworganization.component.ts");
-var viewpost_component_1 = __webpack_require__("../../../../../src/app/viewpost/viewpost.component.ts");
-var post_component_1 = __webpack_require__("../../../../../src/app/post/post.component.ts");
 var state_1 = __webpack_require__("../../../../../src/app/store/state.ts");
 var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
 var effects_1 = __webpack_require__("../../../../@ngrx/effects/index.js");
@@ -129,6 +125,11 @@ var dataReducer_1 = __webpack_require__("../../../../../src/app/store/reducers/d
 var appEffects_1 = __webpack_require__("../../../../../src/app/store/effects/appEffects.ts");
 var accesscontrol_service_1 = __webpack_require__("../../../../../src/app/shared/guards/accesscontrol.service.ts");
 var environment_1 = __webpack_require__("../../../../../src/environments/environment.ts");
+var sight_component_1 = __webpack_require__("../../../../../src/app/view/sight/sight.component.ts");
+var business_component_1 = __webpack_require__("../../../../../src/app/view/business/business.component.ts");
+var organization_component_1 = __webpack_require__("../../../../../src/app/view/organization/organization.component.ts");
+var post_component_1 = __webpack_require__("../../../../../src/app/view/post/post.component.ts");
+var ng2_img_tools_1 = __webpack_require__("../../../../ng2-img-tools/dist/ng2-img-tools.js");
 var reducers = {
     user: userReducer_1.UserReducer,
     view: viewReducer_1.ViewReducer,
@@ -151,14 +152,10 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 app_component_1.AppComponent,
                 login_component_1.LoginComponent,
-                business_component_1.NewBusinessComponent,
-                sight_component_1.NewSightComponent,
-                organization_component_1.NewOrganizationComponent,
-                viewsight_component_1.ViewSightComponent,
-                viewbusiness_component_1.ViewBusinessComponent,
-                vieworganization_component_1.ViewOrganizationComponent,
-                post_component_1.PostComponent,
-                viewpost_component_1.ViewPostComponent
+                sight_component_1.ViewSightComponent,
+                business_component_1.ViewBusinessComponent,
+                organization_component_1.ViewOrganizationComponent,
+                post_component_1.ViewPostComponent
             ],
             imports: [
                 animations_1.BrowserAnimationsModule,
@@ -181,7 +178,8 @@ var AppModule = /** @class */ (function () {
                     apiKey: 'AIzaSyABiswPMWw1sZTcTxheEI1PStdF-Tup3Fw',
                     libraries: ["places"]
                 }),
-                ng2_imageupload_1.ImageUploadModule
+                ng2_imageupload_1.ImageUploadModule,
+                ng2_img_tools_1.Ng2ImgToolsModule
             ],
             providers: [accesscontrol_service_1.AccessControlGuard],
             bootstrap: [app_component_1.AppComponent]
@@ -202,267 +200,23 @@ exports.AppModule = AppModule;
 Object.defineProperty(exports, "__esModule", { value: true });
 var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
 var login_component_1 = __webpack_require__("../../../../../src/app/login/login.component.ts");
-var business_component_1 = __webpack_require__("../../../../../src/app/business/business.component.ts");
-var organization_component_1 = __webpack_require__("../../../../../src/app/organization/organization.component.ts");
-var sight_component_1 = __webpack_require__("../../../../../src/app/sight/sight.component.ts");
-var viewbusiness_component_1 = __webpack_require__("../../../../../src/app/viewbusiness/viewbusiness.component.ts");
-var vieworganization_component_1 = __webpack_require__("../../../../../src/app/vieworganization/vieworganization.component.ts");
-var post_component_1 = __webpack_require__("../../../../../src/app/post/post.component.ts");
-var viewpost_component_1 = __webpack_require__("../../../../../src/app/viewpost/viewpost.component.ts");
-var viewsight_component_1 = __webpack_require__("../../../../../src/app/viewsight/viewsight.component.ts");
+var sight_component_1 = __webpack_require__("../../../../../src/app/view/sight/sight.component.ts");
+var business_component_1 = __webpack_require__("../../../../../src/app/view/business/business.component.ts");
+var organization_component_1 = __webpack_require__("../../../../../src/app/view/organization/organization.component.ts");
+var post_component_1 = __webpack_require__("../../../../../src/app/view/post/post.component.ts");
 var accesscontrol_service_1 = __webpack_require__("../../../../../src/app/shared/guards/accesscontrol.service.ts");
 exports.ROUTES = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'admin', loadChildren: './admin/admin.module#AdminModule', canActivate: [accesscontrol_service_1.AccessControlGuard] },
-    { path: 'business', component: business_component_1.NewBusinessComponent, canActivate: [accesscontrol_service_1.AccessControlGuard] },
-    { path: 'sight', component: sight_component_1.NewSightComponent, canActivate: [accesscontrol_service_1.AccessControlGuard] },
-    { path: 'organization', component: organization_component_1.NewOrganizationComponent, canActivate: [accesscontrol_service_1.AccessControlGuard] },
-    { path: 'viewsight', component: viewsight_component_1.ViewSightComponent, canActivate: [accesscontrol_service_1.AccessControlGuard] },
-    { path: 'viewbusiness', component: viewbusiness_component_1.ViewBusinessComponent, canActivate: [accesscontrol_service_1.AccessControlGuard] },
-    { path: 'vieworganization', component: vieworganization_component_1.ViewOrganizationComponent, canActivate: [accesscontrol_service_1.AccessControlGuard] },
-    { path: 'post', component: post_component_1.PostComponent, canActivate: [accesscontrol_service_1.AccessControlGuard] },
-    { path: 'viewpost', component: viewpost_component_1.ViewPostComponent, canActivate: [accesscontrol_service_1.AccessControlGuard] }
+    { path: 'view/business', component: business_component_1.ViewBusinessComponent, canActivate: [accesscontrol_service_1.AccessControlGuard] },
+    { path: 'view/post', component: post_component_1.ViewPostComponent, canActivate: [accesscontrol_service_1.AccessControlGuard] },
+    { path: 'view/organization', component: organization_component_1.ViewOrganizationComponent, canActivate: [accesscontrol_service_1.AccessControlGuard] },
+    { path: 'view/sight', component: sight_component_1.ViewSightComponent, canActivate: [accesscontrol_service_1.AccessControlGuard] },
+    { path: 'new', loadChildren: './new/new.module#NewModule', canActivate: [accesscontrol_service_1.AccessControlGuard] }
 ];
 exports.ROUTING = router_1.RouterModule.forRoot(exports.ROUTES);
 //# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/app.routing.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/business/business.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<form [formGroup]=\"model\" class=\"unpad\">\n\t<header class=\"header header-5\">\n\t\t<div class=\"branding\">\n\t\t\t<span class=\"title\">MyLive</span>\n\t\t</div>\n\t\t<div class=\"header-actions\">\n\t\t\t<a (click)=\"logout()\" class=\"nav-link nav-text logout\">\n\t\t\t\tLogout\n\t\t\t</a>\n\t\t</div>\n\t</header>\n\t<div class=\"row row-align\">\n\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n\n\t\t\t<section class=\"form-block\">\n\t\t\t\t<label>Create a New Business</label>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Business Name</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Name\" size=\"45\" formControlName=\"name\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Logo Image</label>\n\t\t\t\t\t<img [src]=\"logo\" *ngIf=\"logo\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'logo')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Business Type</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Type\" size=\"45\" formControlName=\"type\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Business Ranking</label>\n\t\t\t\t\t<input type=\"number\" size=\"45\" formControlName=\"ranking\" min=\"1\" max=\"50\" placeholder=\"1-50\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Category</label>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Experiences\" formControlName=\"category\" value=\"Experiences\">\n\t\t\t\t\t\t<label for=\"Experiences\">Experiences</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Entertainment\" formControlName=\"category\" value=\"Entertainment\">\n\t\t\t\t\t\t<label for=\"Entertainment\">Entertainment</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Grub\" formControlName=\"category\" value=\"Grub\">\n\t\t\t\t\t\t<label for=\"Grub\">Grub</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"21+\" formControlName=\"category\" value=\"21+\">\n\t\t\t\t\t\t<label for=\"21+\">21+</label>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Location</label>\n\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"openMap = true; agmMap.triggerResize()\">Set Location</button>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">City</label>\n\t\t\t\t\t<div class=\"select\">\n\t\t                <select formControlName=\"city\">\n\t\t                    <option>San Diego</option>\n\t\t                    <option>Santa Barbara</option>\n\t\t                    <!-- <option>Davis</option> -->\n\t\t                </select>\n\t\t            </div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Zip Code</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"99999\" size=\"45\" formControlName=\"zipcode\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Hours</label>\n\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"openHours = true\">Set Hours</button>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Phone Number</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"(123)-456-7890\" size=\"45\" formControlName=\"phone\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Website</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"http://example.com\" size=\"45\" formControlName=\"website\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Email</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"me@example.com\" size=\"45\" formControlName=\"email\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 1</label>\n\t\t\t\t\t<img [src]=\"img1\" *ngIf=\"img1\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img1')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 2</label>\n\t\t\t\t\t<img [src]=\"img2\" *ngIf=\"img2\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img2')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 3</label>\n\t\t\t\t\t<img [src]=\"img3\" *ngIf=\"img3\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img3')\">\n\t\t\t\t</div>\n\t\t\t</section>\n\t\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Create</button>\n\t\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n\t\t</div>\n\t</div>\n\n\t<clr-modal [(clrModalOpen)]=\"openMap\">\n\t\t<h3 class=\"modal-title\">Business Address</h3>\n\t\t<div class=\"modal-body\">\n\t\t\t<input placeholder=\"Search for Location\" type=\"text\" (setAddress)=\"setAddress($event)\" googleplace size=\"45\" class=\"pad-bottom\">\n\t\t\t<agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"zoom\" #agmMap>\n\t\t\t\t<agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [markerDraggable]=\"true\" (dragEnd)=\"markerDragEnd(m, $event)\"></agm-marker>\n\t\t\t</agm-map>\n\t\t</div>\n\t\t<div class=\"modal-footer\">\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"openMap = false\">Save</button>\n\t\t</div>\n\t</clr-modal>\n\n\t<clr-modal [(clrModalOpen)]=\"openHours\">\n\t\t<h3 class=\"modal-title\">Business Hours</h3>\n\t\t<div class=\"modal-body\">\n\t\t\t<section class=\"form-block\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Monday</label>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<input type=\"time\" formControlName=\"mondayStart\"> to <input type=\"time\" formControlName=\"mondayEnd\">\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Tuesday</label>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<input type=\"time\" formControlName=\"tuesdayStart\"> to <input type=\"time\" formControlName=\"tuesdayEnd\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Wednesday</label>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<input type=\"time\" formControlName=\"wednesdayStart\"> to <input type=\"time\" formControlName=\"wednesdayEnd\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Thursday</label>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<input type=\"time\" formControlName=\"thursdayStart\"> to <input type=\"time\" formControlName=\"thursdayEnd\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Friday</label>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<input type=\"time\" formControlName=\"fridayStart\"> to <input type=\"time\" formControlName=\"fridayEnd\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Saturday</label>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<input type=\"time\" formControlName=\"saturdayStart\"> to <input type=\"time\" formControlName=\"saturdayEnd\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Sunday</label>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<input type=\"time\" formControlName=\"sundayStart\"> to <input type=\"time\" formControlName=\"sundayEnd\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</section>\n\t\t</div>\n\t\t<div class=\"modal-footer\">\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"openHours = false\">Save</button>\n\t\t</div>\n\t</clr-modal>\n</form>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/business/business.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".logout {\n  cursor: pointer; }\n\n.row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n\nagm-map {\n  height: 300px; }\n\n.pad-bottom {\n  margin-bottom: 6px; }\n\n.unpad {\n  padding: 0; }\n\n.img-restrict {\n  max-height: 128px;\n  max-width: 128px; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/business/business.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
-var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
-var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
-var forms_1 = __webpack_require__("../../../forms/@angular/forms.es5.js");
-var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
-var core_2 = __webpack_require__("../../../../@agm/core/index.js");
-var firebase = __webpack_require__("../../../../firebase/firebase-browser.js");
-var database_1 = __webpack_require__("../../../../angularfire2/database.js");
-var NewBusinessComponent = /** @class */ (function () {
-    function NewBusinessComponent(store, router, ngZone, db) {
-        this.store = store;
-        this.router = router;
-        this.ngZone = ngZone;
-        this.db = db;
-        this.model = new forms_1.FormGroup({
-            name: new forms_1.FormControl('', forms_1.Validators.required),
-            type: new forms_1.FormControl('', forms_1.Validators.required),
-            category: new forms_1.FormControl('Experiences', forms_1.Validators.required),
-            ranking: new forms_1.FormControl(1, forms_1.Validators.required),
-            mondayStart: new forms_1.FormControl('', forms_1.Validators.required),
-            mondayEnd: new forms_1.FormControl('', forms_1.Validators.required),
-            tuesdayStart: new forms_1.FormControl('', forms_1.Validators.required),
-            tuesdayEnd: new forms_1.FormControl('', forms_1.Validators.required),
-            wednesdayStart: new forms_1.FormControl('', forms_1.Validators.required),
-            wednesdayEnd: new forms_1.FormControl('', forms_1.Validators.required),
-            thursdayStart: new forms_1.FormControl('', forms_1.Validators.required),
-            thursdayEnd: new forms_1.FormControl('', forms_1.Validators.required),
-            fridayStart: new forms_1.FormControl('', forms_1.Validators.required),
-            fridayEnd: new forms_1.FormControl('', forms_1.Validators.required),
-            saturdayStart: new forms_1.FormControl('', forms_1.Validators.required),
-            saturdayEnd: new forms_1.FormControl('', forms_1.Validators.required),
-            sundayStart: new forms_1.FormControl('', forms_1.Validators.required),
-            sundayEnd: new forms_1.FormControl('', forms_1.Validators.required),
-            email: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.email]),
-            phone: new forms_1.FormControl('', forms_1.Validators.required),
-            website: new forms_1.FormControl('', forms_1.Validators.required),
-            city: new forms_1.FormControl('San Diego', forms_1.Validators.required),
-            zipcode: new forms_1.FormControl('', forms_1.Validators.required),
-            description: new forms_1.FormControl('')
-        });
-        this.logo = null;
-        this.img1 = null;
-        this.img2 = null;
-        this.img3 = null;
-        this.options = {
-            resizeMaxHeight: 128,
-            resizeMaxWidth: 128
-        };
-        this.latitude = 39.8282;
-        this.longitude = -98.5795;
-        this.zoom = 4;
-    }
-    NewBusinessComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                _this.latitude = position.coords.latitude;
-                _this.longitude = position.coords.longitude;
-                _this.zoom = 12;
-            });
-        }
-    };
-    NewBusinessComponent.prototype.selected = function (imageResult, dest) {
-        if (imageResult.error)
-            alert(imageResult.error);
-        this[dest] = imageResult.resized
-            && imageResult.resized.dataURL
-            || imageResult.dataURL;
-        this.pushFileToStorage(imageResult, dest);
-    };
-    NewBusinessComponent.prototype.setAddress = function (place) {
-        var _this = this;
-        this.ngZone.run(function () {
-            _this.latitude = place.geometry.location.lat();
-            _this.longitude = place.geometry.location.lng();
-            _this.zoom = 12;
-        });
-    };
-    NewBusinessComponent.prototype.markerDragEnd = function (m, $event) {
-        this.latitude = $event.coords.lat;
-        this.longitude = $event.coords.lng;
-    };
-    NewBusinessComponent.prototype.pushFileToStorage = function (imageResult, dest) {
-        var _this = this;
-        var storageRef = firebase.storage().ref();
-        var uuid = this.generateUUID();
-        var uploadTask = storageRef.child(uuid + "_" + imageResult.file.name).put(imageResult.file);
-        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function (snapshot) {
-            var snap = snapshot;
-        }, function (error) {
-            console.log(error);
-        }, function () {
-            _this[dest] = uploadTask.snapshot.downloadURL;
-        });
-    };
-    NewBusinessComponent.prototype.generateUUID = function () {
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (d + Math.random() * 16) % 16 | 0;
-            d = Math.floor(d / 16);
-            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-        });
-        return uuid;
-    };
-    NewBusinessComponent.prototype.submit = function () {
-        var _this = this;
-        if (this.model.valid && this.logo) {
-            var submissionModel = {
-                businessHours: {
-                    monday: this.tConvert(this.model.value.mondayStart) + ' - ' + this.tConvert(this.model.value.mondayEnd),
-                    tuesday: this.tConvert(this.model.value.tuesdayStart) + ' - ' + this.tConvert(this.model.value.tuesdayEnd),
-                    wednesday: this.tConvert(this.model.value.wednesdayStart) + ' - ' + this.tConvert(this.model.value.wednesdayEnd),
-                    thursday: this.tConvert(this.model.value.thursdayStart) + ' - ' + this.tConvert(this.model.value.thursdayEnd),
-                    friday: this.tConvert(this.model.value.fridayStart) + ' - ' + this.tConvert(this.model.value.fridayEnd),
-                    saturday: this.tConvert(this.model.value.satudayStart) + ' - ' + this.tConvert(this.model.value.saturdayEnd),
-                    sunday: this.tConvert(this.model.value.sundayStart) + ' - ' + this.tConvert(this.model.value.sundayEnd),
-                },
-                logo_url: this.logo,
-                longitude: this.longitude,
-                latitude: this.latitude,
-                isOrg: false,
-                image1_url: this.img1,
-                image2_url: this.img2,
-                image3_url: this.img3,
-                name: this.model.value.name,
-                type: this.model.value.type,
-                category: this.model.value.category,
-                ranking: this.model.value.ranking,
-                email: this.model.value.email,
-                phone: this.model.value.phone,
-                website: this.model.value.website,
-                zipcode: this.model.value.zipcode,
-                description: this.model.value.description
-            };
-            var info = this.db.list('/city_entities_info/' + this.model.value.city + '/');
-            info.push(submissionModel).then(function (item) {
-                var clientModel = {
-                    businessHours: {
-                        monday: _this.tConvert(_this.model.value.mondayStart) + ' - ' + _this.tConvert(_this.model.value.mondayEnd),
-                        tuesday: _this.tConvert(_this.model.value.tuesdayStart) + ' - ' + _this.tConvert(_this.model.value.tuesdayEnd),
-                        wednesday: _this.tConvert(_this.model.value.wednesdayStart) + ' - ' + _this.tConvert(_this.model.value.wednesdayEnd),
-                        thursday: _this.tConvert(_this.model.value.thursdayStart) + ' - ' + _this.tConvert(_this.model.value.thursdayEnd),
-                        friday: _this.tConvert(_this.model.value.fridayStart) + ' - ' + _this.tConvert(_this.model.value.fridayEnd),
-                        saturday: _this.tConvert(_this.model.value.satudayStart) + ' - ' + _this.tConvert(_this.model.value.saturdayEnd),
-                        sunday: _this.tConvert(_this.model.value.sundayStart) + ' - ' + _this.tConvert(_this.model.value.sundayEnd),
-                    },
-                    category: _this.model.value.category,
-                    isOrg: false,
-                    latitude: _this.latitude,
-                    logo_url: _this.logo,
-                    longitude: _this.longitude,
-                    name: _this.model.value.name,
-                    ranking: _this.model.value.ranking,
-                    type: _this.model.value.type
-                };
-                var client = _this.db.list('/city_entities/' + _this.model.value.city + '/');
-                client.update(item.key, clientModel);
-            });
-            this.router.navigate(['/admin/' + this.model.value.category.toLowerCase()]);
-        }
-    };
-    NewBusinessComponent.prototype.tConvert = function (time) {
-        time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
-        if (time.length > 1) {
-            time = time.slice(1);
-            time[5] = +time[0] < 12 ? 'AM' : 'PM';
-            time[0] = +time[0] % 12 || 12;
-        }
-        return time.join('');
-    };
-    NewBusinessComponent.prototype.logout = function () {
-        this.store.dispatch({ type: appActions_1.AppActions.LOGOUT, payload: null });
-        this.router.navigate(['login']);
-    };
-    NewBusinessComponent.prototype.cancel = function () {
-        this.router.navigate(['/admin']);
-    };
-    __decorate([
-        core_1.ViewChild('agmMap'),
-        __metadata("design:type", typeof (_a = typeof core_2.AgmMap !== "undefined" && core_2.AgmMap) === "function" && _a || Object)
-    ], NewBusinessComponent.prototype, "agmMap", void 0);
-    NewBusinessComponent = __decorate([
-        core_1.Component({
-            selector: 'app-newbusiness',
-            template: __webpack_require__("../../../../../src/app/business/business.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/business/business.component.scss")]
-        }),
-        __metadata("design:paramtypes", [typeof (_b = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object, typeof (_d = typeof core_1.NgZone !== "undefined" && core_1.NgZone) === "function" && _d || Object, typeof (_e = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _e || Object])
-    ], NewBusinessComponent);
-    return NewBusinessComponent;
-    var _a, _b, _c, _d, _e;
-}());
-exports.NewBusinessComponent = NewBusinessComponent;
-//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/business/business.component.js.map
 
 /***/ }),
 
@@ -484,7 +238,7 @@ __export(__webpack_require__("../../../../../src/app/app.module.ts"));
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"login-wrapper\">\n    <form class=\"login\">\n        <label class=\"title\">\n            <h3 class=\"welcome\">Welcome to</h3>\n            MyLive\n        </label>\n        <div class=\"login-group\">\n            <form [formGroup]=\"model\">\n                <div>\n                    <input class=\"username\" type=\"text\" placeholder=\"Email\" formControlName=\"email\">\n                </div>\n                <div>\n                    <input class=\"password\" type=\"password\" placeholder=\"Password\" formControlName=\"password\">\n                </div>\n            </form>\n            <p *ngIf=\"loginFail == true\">Login Failed</p>\n            <button type=\"submit\" class=\"btn btn-success\" (click)=\"login()\">Login</button>\n        </div>\n    </form>\n</div>"
+module.exports = "<div class=\"login-wrapper\">\n    <form class=\"login\">\n        <label class=\"title\">\n            <h3 class=\"welcome\">Welcome to</h3>\n            YompLive\n        </label>\n        <div class=\"login-group\">\n            <form [formGroup]=\"model\">\n                <div>\n                    <input class=\"username\" type=\"text\" placeholder=\"Email\" formControlName=\"email\">\n                </div>\n                <div>\n                    <input class=\"password\" type=\"password\" placeholder=\"Password\" formControlName=\"password\">\n                </div>\n            </form>\n            <p *ngIf=\"loginFail == true\">Login Failed</p>\n            <button type=\"submit\" class=\"btn btn-success\" (click)=\"login()\">Login</button>\n        </div>\n    </form>\n</div>"
 
 /***/ }),
 
@@ -570,384 +324,6 @@ exports.LoginComponent = LoginComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/organization/organization.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<form [formGroup]=\"model\" class=\"unpad\">\n\t<header class=\"header header-5\">\n\t\t<div class=\"branding\">\n\t\t\t<span class=\"title\">MyLive</span>\n\t\t</div>\n\t\t<div class=\"header-actions\">\n\t\t\t<a (click)=\"logout()\" class=\"nav-link nav-text logout\">\n\t\t\t\tLogout\n\t\t\t</a>\n\t\t</div>\n\t</header>\n\t<div class=\"row row-align\">\n\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n\n\t\t\t<section class=\"form-block\">\n\t\t\t\t<label>Create a New Organization</label>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Organization Name</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Name\" size=\"45\" formControlName=\"name\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Logo Image</label>\n\t\t\t\t\t<img [src]=\"logo\" *ngIf=\"logo\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'logo')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Organization Type</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Type\" size=\"45\" formControlName=\"type\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Organization Ranking</label>\n\t\t\t\t\t<input type=\"number\" size=\"45\" formControlName=\"ranking\" min=\"1\" max=\"50\" placeholder=\"1-50\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Category</label>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"CampusAffiliated\" formControlName=\"category\" value=\"Campus Affiliated\">\n\t\t\t\t\t\t<label for=\"CampusAffiliated\">Campus Affiliated</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Organizations\" formControlName=\"category\" value=\"Campus Organization\">\n\t\t\t\t\t\t<label for=\"Organizations\">Organizations</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Businesses\" formControlName=\"category\" value=\"Business\">\n\t\t\t\t\t\t<label for=\"Businesses\">Businesses</label>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">School</label>\n\t\t\t\t\t<div class=\"select\">\n\t\t                <select formControlName=\"city\">\n\t\t                    <option>UC San Diego</option>\n\t\t                    <option>UC Santa Barbara</option>\n\t\t                    <!-- <option>UC Davis</option> -->\n\t\t                </select>\n\t\t            </div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Zip Code</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"99999\" size=\"45\" formControlName=\"zipcode\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Phone Number</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"(123)-456-7890\" size=\"45\" formControlName=\"phone\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Website</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"http://example.com\" size=\"45\" formControlName=\"website\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Email</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"me@example.com\" size=\"45\" formControlName=\"email\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 1</label>\n\t\t\t\t\t<img [src]=\"img1\" *ngIf=\"img1\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img1')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 2</label>\n\t\t\t\t\t<img [src]=\"img2\" *ngIf=\"img2\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img2')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 3</label>\n\t\t\t\t\t<img [src]=\"img3\" *ngIf=\"img3\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img3')\">\n\t\t\t\t</div>\n\t\t\t</section>\n\t\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Create</button>\n\t\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n\t\t</div>\n\t</div>\n</form>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/organization/organization.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".logout {\n  cursor: pointer; }\n\n.row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n\nagm-map {\n  height: 300px; }\n\n.pad-bottom {\n  margin-bottom: 6px; }\n\n.unpad {\n  padding: 0; }\n\n.img-restrict {\n  max-height: 128px;\n  max-width: 128px; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/organization/organization.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
-var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
-var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
-var forms_1 = __webpack_require__("../../../forms/@angular/forms.es5.js");
-var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
-var firebase = __webpack_require__("../../../../firebase/firebase-browser.js");
-var database_1 = __webpack_require__("../../../../angularfire2/database.js");
-var NewOrganizationComponent = /** @class */ (function () {
-    function NewOrganizationComponent(store, router, db) {
-        this.store = store;
-        this.router = router;
-        this.db = db;
-        this.model = new forms_1.FormGroup({
-            name: new forms_1.FormControl('', forms_1.Validators.required),
-            type: new forms_1.FormControl('', forms_1.Validators.required),
-            category: new forms_1.FormControl('Campus Affiliated', forms_1.Validators.required),
-            ranking: new forms_1.FormControl(1, forms_1.Validators.required),
-            email: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.email]),
-            phone: new forms_1.FormControl('', forms_1.Validators.required),
-            website: new forms_1.FormControl('', forms_1.Validators.required),
-            city: new forms_1.FormControl('UC San Diego', forms_1.Validators.required),
-            zipcode: new forms_1.FormControl('', forms_1.Validators.required),
-            description: new forms_1.FormControl('')
-        });
-        this.logo = null;
-        this.img1 = null;
-        this.img2 = null;
-        this.img3 = null;
-        this.options = {
-            resizeMaxHeight: 128,
-            resizeMaxWidth: 128
-        };
-    }
-    NewOrganizationComponent.prototype.ngOnInit = function () {
-    };
-    NewOrganizationComponent.prototype.selected = function (imageResult, dest) {
-        if (imageResult.error)
-            alert(imageResult.error);
-        this[dest] = imageResult.resized
-            && imageResult.resized.dataURL
-            || imageResult.dataURL;
-        this.pushFileToStorage(imageResult, dest);
-    };
-    NewOrganizationComponent.prototype.pushFileToStorage = function (imageResult, dest) {
-        var _this = this;
-        var storageRef = firebase.storage().ref();
-        var uuid = this.generateUUID();
-        var uploadTask = storageRef.child(uuid + "_" + imageResult.file.name).put(imageResult.file);
-        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function (snapshot) {
-            var snap = snapshot;
-        }, function (error) {
-            console.log(error);
-        }, function () {
-            _this[dest] = uploadTask.snapshot.downloadURL;
-        });
-    };
-    NewOrganizationComponent.prototype.generateUUID = function () {
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (d + Math.random() * 16) % 16 | 0;
-            d = Math.floor(d / 16);
-            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-        });
-        return uuid;
-    };
-    NewOrganizationComponent.prototype.submit = function () {
-        var _this = this;
-        if (this.model.valid && this.logo) {
-            var submissionModel = {
-                logo_url: this.logo,
-                isOrg: true,
-                image1_url: this.img1,
-                image2_url: this.img2,
-                image3_url: this.img3,
-                name: this.model.value.name,
-                type: this.model.value.type,
-                category: this.model.value.category,
-                ranking: this.model.value.ranking,
-                email: this.model.value.email,
-                phone: this.model.value.phone,
-                website: this.model.value.website,
-                zipcode: this.model.value.zipcode,
-                description: this.model.value.description
-            };
-            var info = this.db.list('/school_entities_info/' + this.getCity(this.model.value.city) + '/' + this.model.value.city + '/');
-            info.push(submissionModel).then(function (item) {
-                var clientModel = {
-                    category: _this.model.value.category,
-                    isOrg: true,
-                    logo_url: _this.logo,
-                    name: _this.model.value.name,
-                    ranking: _this.model.value.ranking,
-                    type: _this.model.value.type
-                };
-                var client = _this.db.list('/school_entities/' + _this.getCity(_this.model.value.city) + '/' + _this.model.value.city + '/');
-                client.update(item.key, clientModel);
-            });
-            this.router.navigate(['/admin/campus']);
-        }
-    };
-    NewOrganizationComponent.prototype.getCity = function (school) {
-        if (school == 'UC San Diego') {
-            return 'San Diego';
-        }
-        else if (school == 'UC Santa Barbara') {
-            return 'Santa Barbara';
-        }
-        else if (school == 'UC Davis') {
-            return 'Davis';
-        }
-    };
-    NewOrganizationComponent.prototype.logout = function () {
-        this.store.dispatch({ type: appActions_1.AppActions.LOGOUT, payload: null });
-        this.router.navigate(['login']);
-    };
-    NewOrganizationComponent.prototype.cancel = function () {
-        this.router.navigate(['/admin/campus']);
-    };
-    NewOrganizationComponent = __decorate([
-        core_1.Component({
-            selector: 'app-neworganization',
-            template: __webpack_require__("../../../../../src/app/organization/organization.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/organization/organization.component.scss")]
-        }),
-        __metadata("design:paramtypes", [typeof (_a = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object, typeof (_c = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _c || Object])
-    ], NewOrganizationComponent);
-    return NewOrganizationComponent;
-    var _a, _b, _c;
-}());
-exports.NewOrganizationComponent = NewOrganizationComponent;
-//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/organization/organization.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/post/post.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<form [formGroup]=\"model\" class=\"unpad\">\n\t<header class=\"header header-5\">\n\t\t<div class=\"branding\">\n\t\t\t<span class=\"title\">MyLive</span>\n\t\t</div>\n\t\t<div class=\"header-actions\">\n\t\t\t<a (click)=\"logout()\" class=\"nav-link nav-text logout\">\n\t\t\t\tLogout\n\t\t\t</a>\n\t\t</div>\n\t</header>\n\t<div class=\"row row-align\">\n\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t<section class=\"form-block\">\n\t\t\t\t<label>Create a New Post for {{this.poster.name}}</label>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Post Title</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Name\" size=\"45\" formControlName=\"name\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\" *ngIf=\"model.value.type == 'Experience'\">\n\t\t\t\t\t<label class=\"required\">Experience Image</label>\n\t\t\t\t\t<img [src]=\"logo\" *ngIf=\"logo\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'logo')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\" *ngIf=\"viewState.service == 'CampusLive'\">\n\t\t\t\t\t<label class=\"required\">Location</label>\n\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"openMap = true; agmMap.triggerResize()\">Set Location</button>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Post Type</label>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Event\" formControlName=\"type\" value=\"Event\">\n\t\t\t\t\t\t<label for=\"Event\">Event</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Deal\" formControlName=\"type\" value=\"Deal\">\n\t\t\t\t\t\t<label for=\"Deal\">Deal</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Experience\" formControlName=\"type\" value=\"Experience\">\n\t\t\t\t\t\t<label for=\"Experience\">Experience</label>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Start Date/Time</label>\n\t\t\t\t\t<input type=\"datetime-local\" formControlName=\"start_date\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">End Date/Time</label>\n\t\t\t\t\t<input type=\"datetime-local\" formControlName=\"end_date\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Deal/Purchase Page URL</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"http://example.com\" size=\"45\" formControlName=\"website\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t            <label>Featured</label>\n\t\t            <div class=\"radio-inline\">\n\t\t                <input type=\"checkbox\" name=\"isFeatured\" id=\"isFeatured\" formControlName=\"isFeatured\">\n\t\t            </div>\n\t\t        </div>\n\t\t\t</section>\n\t\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Create</button>\n\t\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n\t\t</div>\n\t</div>\n\n\t<clr-modal [(clrModalOpen)]=\"openMap\">\n\t\t<h3 class=\"modal-title\">Business Address</h3>\n\t\t<div class=\"modal-body\">\n\t\t\t<input placeholder=\"Search for Location\" type=\"text\" (setAddress)=\"setAddress($event)\" googleplace size=\"45\" class=\"pad-bottom\">\n\t\t\t<agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"zoom\" #agmMap>\n\t\t\t\t<agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [markerDraggable]=\"true\" (dragEnd)=\"markerDragEnd(m, $event)\"></agm-marker>\n\t\t\t</agm-map>\n\t\t</div>\n\t\t<div class=\"modal-footer\">\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"openMap = false\">Save</button>\n\t\t</div>\n\t</clr-modal>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/post/post.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".logout {\n  cursor: pointer; }\n\n.row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n\nagm-map {\n  height: 300px; }\n\n.pad-bottom {\n  margin-bottom: 6px; }\n\n.unpad {\n  padding: 0; }\n\n.img-restrict {\n  max-height: 128px;\n  max-width: 128px; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/post/post.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
-var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
-var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
-var forms_1 = __webpack_require__("../../../forms/@angular/forms.es5.js");
-var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
-var core_2 = __webpack_require__("../../../../@agm/core/index.js");
-var firebase = __webpack_require__("../../../../firebase/firebase-browser.js");
-var database_1 = __webpack_require__("../../../../angularfire2/database.js");
-var PostComponent = /** @class */ (function () {
-    function PostComponent(store, router, ngZone, db) {
-        this.store = store;
-        this.router = router;
-        this.ngZone = ngZone;
-        this.db = db;
-        this.model = new forms_1.FormGroup({
-            name: new forms_1.FormControl('', forms_1.Validators.required),
-            type: new forms_1.FormControl('Event', forms_1.Validators.required),
-            start_date: new forms_1.FormControl('', forms_1.Validators.required),
-            end_date: new forms_1.FormControl('', forms_1.Validators.required),
-            website: new forms_1.FormControl(''),
-            description: new forms_1.FormControl(''),
-            isFeatured: new forms_1.FormControl(false)
-        });
-        this.logo = null;
-        this.options = {
-            resizeMaxHeight: 128,
-            resizeMaxWidth: 128
-        };
-        this.latitude = 39.8282;
-        this.longitude = -98.5795;
-        this.zoom = 4;
-    }
-    PostComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.store.select(function (state) {
-            return state;
-        }).subscribe(function (state) {
-            _this.poster = state.data.newPoster;
-            _this.viewState = state.view;
-            if (_this.viewState.service != 'CampusLive') {
-                _this.longitude = _this.poster.longitude;
-                _this.latitude = _this.poster.latitude;
-            }
-            else {
-                if ("geolocation" in navigator) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        _this.latitude = position.coords.latitude;
-                        _this.longitude = position.coords.longitude;
-                        _this.zoom = 12;
-                    });
-                }
-            }
-        });
-    };
-    PostComponent.prototype.selected = function (imageResult, dest) {
-        if (imageResult.error)
-            alert(imageResult.error);
-        this[dest] = imageResult.resized
-            && imageResult.resized.dataURL
-            || imageResult.dataURL;
-        this.pushFileToStorage(imageResult, dest);
-    };
-    PostComponent.prototype.setAddress = function (place) {
-        var _this = this;
-        this.ngZone.run(function () {
-            _this.latitude = place.geometry.location.lat();
-            _this.longitude = place.geometry.location.lng();
-            _this.zoom = 12;
-        });
-    };
-    PostComponent.prototype.markerDragEnd = function (m, $event) {
-        this.latitude = $event.coords.lat;
-        this.longitude = $event.coords.lng;
-    };
-    PostComponent.prototype.pushFileToStorage = function (imageResult, dest) {
-        var _this = this;
-        var storageRef = firebase.storage().ref();
-        var uuid = this.generateUUID();
-        var uploadTask = storageRef.child(uuid + "_" + imageResult.file.name).put(imageResult.file);
-        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function (snapshot) {
-            var snap = snapshot;
-        }, function (error) {
-            console.log(error);
-        }, function () {
-            _this[dest] = uploadTask.snapshot.downloadURL;
-        });
-    };
-    PostComponent.prototype.generateUUID = function () {
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (d + Math.random() * 16) % 16 | 0;
-            d = Math.floor(d / 16);
-            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-        });
-        return uuid;
-    };
-    PostComponent.prototype.submit = function () {
-        if (this.model.valid) {
-            var submissionModel = {
-                logo_url: this.logo,
-                longitude: this.longitude,
-                latitude: this.latitude,
-                isEntityOrg: false,
-                name: this.model.value.name,
-                type: this.model.value.type,
-                website: this.model.value.website,
-                description: this.model.value.description,
-                start_date: this.model.value.start_date,
-                end_date: this.model.value.end_date,
-                location: this.poster.name,
-                isFeatured: this.model.value.isFeatured,
-                entity_id: this.poster.$key
-            };
-            if (this.viewState.service == 'CampusLive') {
-                submissionModel.isEntityOrg = true;
-                var info = this.db.list('/school_posts/' + this.getCity(this.poster.school) + '/' + this.poster.school + '/');
-                info.push(submissionModel);
-                this.router.navigate(['/vieworganization']);
-            }
-            else {
-                var info = this.db.list('/city_posts/' + this.poster.city + '/');
-                info.push(submissionModel);
-                this.router.navigate(['/viewbusiness']);
-            }
-        }
-    };
-    PostComponent.prototype.getCity = function (school) {
-        if (school == 'UC San Diego') {
-            return 'San Diego';
-        }
-        else if (school == 'UC Santa Barbara') {
-            return 'Santa Barbara';
-        }
-        else if (school == 'UC Davis') {
-            return 'Davis';
-        }
-    };
-    PostComponent.prototype.logout = function () {
-        this.store.dispatch({ type: appActions_1.AppActions.LOGOUT, payload: null });
-        this.router.navigate(['login']);
-    };
-    PostComponent.prototype.cancel = function () {
-        this.router.navigate(['/admin']);
-    };
-    __decorate([
-        core_1.ViewChild('agmMap'),
-        __metadata("design:type", typeof (_a = typeof core_2.AgmMap !== "undefined" && core_2.AgmMap) === "function" && _a || Object)
-    ], PostComponent.prototype, "agmMap", void 0);
-    PostComponent = __decorate([
-        core_1.Component({
-            selector: 'app-post',
-            template: __webpack_require__("../../../../../src/app/post/post.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/post/post.component.scss")]
-        }),
-        __metadata("design:paramtypes", [typeof (_b = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object, typeof (_d = typeof core_1.NgZone !== "undefined" && core_1.NgZone) === "function" && _d || Object, typeof (_e = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _e || Object])
-    ], PostComponent);
-    return PostComponent;
-    var _a, _b, _c, _d, _e;
-}());
-exports.PostComponent = PostComponent;
-//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/post/post.component.js.map
-
-/***/ }),
-
 /***/ "../../../../../src/app/shared/directives/googleplace.directive.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1010,6 +386,69 @@ exports.GoogleplaceDirective = GoogleplaceDirective;
 
 /***/ }),
 
+/***/ "../../../../../src/app/shared/functions/functions.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function getCity(school) {
+    if (school == 'UC San Diego') {
+        return 'San Diego';
+    }
+    else if (school == 'UC Santa Barbara') {
+        return 'Santa Barbara';
+    }
+    else if (school == 'UC Davis') {
+        return 'Davis';
+    }
+}
+exports.getCity = getCity;
+function getSchool(city) {
+    if (city == 'San Diego') {
+        return 'UC San Diego';
+    }
+    else if (city == 'Santa Barbara') {
+        return 'UC Santa Barbara';
+    }
+    else if (city == 'Davis') {
+        return 'UC Davis';
+    }
+}
+exports.getSchool = getSchool;
+function generateUUID() {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+    return uuid;
+}
+exports.generateUUID = generateUUID;
+function tConvert(time) {
+    time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+    if (time.length > 1) {
+        time = time.slice(1);
+        time[5] = +time[0] < 12 ? 'AM' : 'PM';
+        time[0] = +time[0] % 12 || 12;
+    }
+    return time.join('');
+}
+exports.tConvert = tConvert;
+function extractFireBaseFileName(url) {
+    return unescape(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('?')));
+}
+exports.extractFireBaseFileName = extractFireBaseFileName;
+function checkURL(url) {
+    var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    return regexp.test(url);
+}
+exports.checkURL = checkURL;
+//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/shared/functions/functions.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/shared/guards/accesscontrol.service.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1061,10 +500,181 @@ exports.AccessControlGuard = AccessControlGuard;
 
 /***/ }),
 
+/***/ "../../../../../src/app/shared/header/header.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<header class=\"header header-5\">\n  <div class=\"branding\">\n    <span class=\"title logout\" (click)=\"home()\">YompLive</span>\n  </div>\n  <div class=\"header-actions\">\n      <a (click)=\"logout()\" class=\"nav-link nav-text logout\">\n          Logout\n      </a>\n  </div>\n</header>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/header/header.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".logout {\n  cursor: pointer; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/header/header.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
+var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
+var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
+var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
+var HeaderComponent = /** @class */ (function () {
+    function HeaderComponent(store, router) {
+        this.store = store;
+        this.router = router;
+    }
+    HeaderComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.store.select(function (state) {
+            return state.view;
+        }).subscribe(function (view) {
+            _this.subroute = view.subroute;
+        });
+    };
+    HeaderComponent.prototype.logout = function () {
+        this.store.dispatch({ type: appActions_1.AppActions.LOGOUT, payload: null });
+        this.router.navigate(['login']);
+    };
+    HeaderComponent.prototype.home = function () {
+        this.router.navigate(['/admin/' + this.subroute]);
+    };
+    HeaderComponent = __decorate([
+        core_1.Component({
+            selector: 'app-header',
+            template: __webpack_require__("../../../../../src/app/shared/header/header.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/shared/header/header.component.scss")]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
+    ], HeaderComponent);
+    return HeaderComponent;
+    var _a, _b;
+}());
+exports.HeaderComponent = HeaderComponent;
+//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/shared/header/header.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/qualify/qualifycategory.pipe.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
+var QualifyCategoryPipe = /** @class */ (function () {
+    function QualifyCategoryPipe() {
+    }
+    QualifyCategoryPipe.prototype.transform = function (value, category, query) {
+        if (!value)
+            return value;
+        if (value.category == category) {
+            if ((value.name.toLowerCase()).indexOf(query) != -1) {
+                return true;
+            }
+            else if ((value.type.toLowerCase()).indexOf(query) != -1) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    };
+    QualifyCategoryPipe = __decorate([
+        core_1.Pipe({ name: 'qualifycategory', pure: false }),
+        __metadata("design:paramtypes", [])
+    ], QualifyCategoryPipe);
+    return QualifyCategoryPipe;
+}());
+exports.QualifyCategoryPipe = QualifyCategoryPipe;
+//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/shared/qualify/qualifycategory.pipe.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/qualify/qualifytype.pipe.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
+var QualifyTypePipe = /** @class */ (function () {
+    function QualifyTypePipe() {
+    }
+    QualifyTypePipe.prototype.transform = function (value, query) {
+        if (!value)
+            return value;
+        if ((value.name.toLowerCase()).indexOf(query) != -1) {
+            return true;
+        }
+        else if ((value.type.toLowerCase()).indexOf(query) != -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    QualifyTypePipe = __decorate([
+        core_1.Pipe({ name: 'qualifytype', pure: false }),
+        __metadata("design:paramtypes", [])
+    ], QualifyTypePipe);
+    return QualifyTypePipe;
+}());
+exports.QualifyTypePipe = QualifyTypePipe;
+//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/shared/qualify/qualifytype.pipe.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/shared/searchbox/searchbox.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"inner\">\n\t<clr-icon shape=\"search\" size=\"24\"></clr-icon>\n\t<input id=\"searchField\" type=\"text\" class=\"field\" placeholder=\"Search\" size=\"59\" [ngModel]=\"query\" (ngModelChange)=\"updateSearch($event)\">\n</div>"
+module.exports = "<div class=\"inner\">\n\t<clr-icon shape=\"search\" size=\"24\"></clr-icon>\n\t<input id=\"searchField\" type=\"text\" class=\"field\" placeholder=\"Search\" size={{size}} [ngModel]=\"query\" (ngModelChange)=\"updateSearch($event)\">\n</div>"
 
 /***/ }),
 
@@ -1108,11 +718,18 @@ var SearchboxComponent = /** @class */ (function () {
         this.change = new core_1.EventEmitter();
     }
     SearchboxComponent.prototype.ngOnInit = function () {
+        if (!this.size) {
+            this.size = 59;
+        }
     };
     SearchboxComponent.prototype.updateSearch = function (value) {
         this.query = value;
         this.change.emit(this.query);
     };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], SearchboxComponent.prototype, "size", void 0);
     __decorate([
         core_1.Output(),
         __metadata("design:type", typeof (_a = typeof core_1.EventEmitter !== "undefined" && core_1.EventEmitter) === "function" && _a || Object)
@@ -1150,6 +767,9 @@ var common_1 = __webpack_require__("../../../common/@angular/common.es5.js");
 var clarity_angular_1 = __webpack_require__("../../../../clarity-angular/clarity-angular.es5.js");
 var googleplace_directive_1 = __webpack_require__("../../../../../src/app/shared/directives/googleplace.directive.ts");
 var searchbox_component_1 = __webpack_require__("../../../../../src/app/shared/searchbox/searchbox.component.ts");
+var header_component_1 = __webpack_require__("../../../../../src/app/shared/header/header.component.ts");
+var qualifytype_pipe_1 = __webpack_require__("../../../../../src/app/shared/qualify/qualifytype.pipe.ts");
+var qualifycategory_pipe_1 = __webpack_require__("../../../../../src/app/shared/qualify/qualifycategory.pipe.ts");
 var forms_1 = __webpack_require__("../../../forms/@angular/forms.es5.js");
 var SharedModule = /** @class */ (function () {
     function SharedModule() {
@@ -1171,12 +791,18 @@ var SharedModule = /** @class */ (function () {
             ],
             declarations: [
                 googleplace_directive_1.GoogleplaceDirective,
-                searchbox_component_1.SearchboxComponent
+                searchbox_component_1.SearchboxComponent,
+                header_component_1.HeaderComponent,
+                qualifycategory_pipe_1.QualifyCategoryPipe,
+                qualifytype_pipe_1.QualifyTypePipe
             ],
             exports: [
                 common_1.CommonModule,
                 googleplace_directive_1.GoogleplaceDirective,
-                searchbox_component_1.SearchboxComponent
+                searchbox_component_1.SearchboxComponent,
+                header_component_1.HeaderComponent,
+                qualifycategory_pipe_1.QualifyCategoryPipe,
+                qualifytype_pipe_1.QualifyTypePipe
             ]
         })
     ], SharedModule);
@@ -1185,180 +811,6 @@ var SharedModule = /** @class */ (function () {
 }());
 exports.SharedModule = SharedModule;
 //# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/shared/shared.module.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/sight/sight.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<form [formGroup]=\"model\" class=\"unpad\">\n\t<header class=\"header header-5\">\n\t\t<div class=\"branding\">\n\t\t\t<span class=\"title\">MyLive</span>\n\t\t</div>\n\t\t<div class=\"header-actions\">\n\t\t\t<a (click)=\"logout()\" class=\"nav-link nav-text logout\">\n\t\t\t\tLogout\n\t\t\t</a>\n\t\t</div>\n\t</header>\n\t<div class=\"row row-align\">\n\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n\n\t\t\t<section class=\"form-block\">\n\t\t\t\t<label>Create a New Sight</label>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Sight Name</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Name\" size=\"45\" formControlName=\"name\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Logo Image</label>\n\t\t\t\t\t<img [src]=\"logo\" *ngIf=\"logo\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'logo')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Sight Type</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Type\" size=\"45\" formControlName=\"type\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Sight Ranking</label>\n\t\t\t\t\t<input type=\"number\" size=\"45\" formControlName=\"ranking\" min=\"1\" max=\"50\" placeholder=\"1-50\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Location</label>\n\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"openMap = true; agmMap.triggerResize()\">Set Location</button>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">City</label>\n\t\t\t\t\t<div class=\"select\">\n\t\t                <select formControlName=\"city\">\n\t\t                    <option>San Diego</option>\n\t\t                    <option>Santa Barbara</option>\n\t\t                    <option>Davis</option>\n\t\t                </select>\n\t\t            </div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Zip Code</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"99999\" size=\"45\" formControlName=\"zipcode\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 1</label>\n\t\t\t\t\t<img [src]=\"img1\" *ngIf=\"img1\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img1')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 2</label>\n\t\t\t\t\t<img [src]=\"img2\" *ngIf=\"img2\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img2')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 3</label>\n\t\t\t\t\t<img [src]=\"img3\" *ngIf=\"img3\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img3')\">\n\t\t\t\t</div>\n\t\t\t</section>\n\t\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Create</button>\n\t\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n\t\t</div>\n\t</div>\n\n\t<clr-modal [(clrModalOpen)]=\"openMap\">\n\t\t<h3 class=\"modal-title\">Sight Address</h3>\n\t\t<div class=\"modal-body\">\n\t\t\t<input placeholder=\"Search for Location\" type=\"text\" (setAddress)=\"setAddress($event)\" googleplace size=\"45\" class=\"pad-bottom\">\n\t\t\t<agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"zoom\" #agmMap>\n\t\t\t\t<agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [markerDraggable]=\"true\" (dragEnd)=\"markerDragEnd(m, $event)\"></agm-marker>\n\t\t\t</agm-map>\n\t\t</div>\n\t\t<div class=\"modal-footer\">\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"openMap = false\">Save</button>\n\t\t</div>\n\t</clr-modal>\n</form>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/sight/sight.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".logout {\n  cursor: pointer; }\n\n.row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n\nagm-map {\n  height: 300px; }\n\n.pad-bottom {\n  margin-bottom: 6px; }\n\n.unpad {\n  padding: 0; }\n\n.img-restrict {\n  max-height: 128px;\n  max-width: 128px; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/sight/sight.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
-var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
-var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
-var forms_1 = __webpack_require__("../../../forms/@angular/forms.es5.js");
-var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
-var core_2 = __webpack_require__("../../../../@agm/core/index.js");
-var firebase = __webpack_require__("../../../../firebase/firebase-browser.js");
-var database_1 = __webpack_require__("../../../../angularfire2/database.js");
-var NewSightComponent = /** @class */ (function () {
-    function NewSightComponent(store, router, ngZone, db) {
-        this.store = store;
-        this.router = router;
-        this.ngZone = ngZone;
-        this.db = db;
-        this.model = new forms_1.FormGroup({
-            name: new forms_1.FormControl('', forms_1.Validators.required),
-            type: new forms_1.FormControl('', forms_1.Validators.required),
-            ranking: new forms_1.FormControl(1, forms_1.Validators.required),
-            city: new forms_1.FormControl('San Diego', forms_1.Validators.required),
-            zipcode: new forms_1.FormControl('', forms_1.Validators.required),
-            description: new forms_1.FormControl(''),
-            category: new forms_1.FormControl('Campus Affiliated', forms_1.Validators.required)
-        });
-        this.logo = null;
-        this.img1 = null;
-        this.img2 = null;
-        this.img3 = null;
-        this.options = {
-            resizeMaxHeight: 128,
-            resizeMaxWidth: 128
-        };
-        this.latitude = 39.8282;
-        this.longitude = -98.5795;
-        this.zoom = 4;
-    }
-    NewSightComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                _this.latitude = position.coords.latitude;
-                _this.longitude = position.coords.longitude;
-                _this.zoom = 12;
-            });
-        }
-    };
-    NewSightComponent.prototype.selected = function (imageResult, dest) {
-        if (imageResult.error)
-            alert(imageResult.error);
-        this[dest] = imageResult.resized
-            && imageResult.resized.dataURL
-            || imageResult.dataURL;
-        this.pushFileToStorage(imageResult, dest);
-    };
-    NewSightComponent.prototype.setAddress = function (place) {
-        var _this = this;
-        this.ngZone.run(function () {
-            _this.latitude = place.geometry.location.lat();
-            _this.longitude = place.geometry.location.lng();
-            _this.zoom = 12;
-        });
-    };
-    NewSightComponent.prototype.markerDragEnd = function (m, $event) {
-        this.latitude = $event.coords.lat;
-        this.longitude = $event.coords.lng;
-    };
-    NewSightComponent.prototype.pushFileToStorage = function (imageResult, dest) {
-        var _this = this;
-        var storageRef = firebase.storage().ref();
-        var uuid = this.generateUUID();
-        var uploadTask = storageRef.child(uuid + "_" + imageResult.file.name).put(imageResult.file);
-        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function (snapshot) {
-            var snap = snapshot;
-        }, function (error) {
-            console.log(error);
-        }, function () {
-            _this[dest] = uploadTask.snapshot.downloadURL;
-        });
-    };
-    NewSightComponent.prototype.generateUUID = function () {
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (d + Math.random() * 16) % 16 | 0;
-            d = Math.floor(d / 16);
-            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-        });
-        return uuid;
-    };
-    NewSightComponent.prototype.submit = function () {
-        if (this.model.valid && this.logo) {
-            var submissionModel = {
-                logo_url: this.logo,
-                longitude: this.longitude,
-                latitude: this.latitude,
-                image1_url: this.img1,
-                image2_url: this.img2,
-                image3_url: this.img3,
-                name: this.model.value.name,
-                type: this.model.value.type,
-                ranking: this.model.value.ranking,
-                zipcode: this.model.value.zipcode,
-                description: this.model.value.description
-            };
-            var info = this.db.list('/sights/' + this.model.value.city + '/');
-            info.push(submissionModel);
-            this.router.navigate(['/admin/sights']);
-        }
-    };
-    NewSightComponent.prototype.logout = function () {
-        this.store.dispatch({ type: appActions_1.AppActions.LOGOUT, payload: null });
-        this.router.navigate(['login']);
-    };
-    NewSightComponent.prototype.cancel = function () {
-        this.router.navigate(['/admin/sights']);
-    };
-    __decorate([
-        core_1.ViewChild('agmMap'),
-        __metadata("design:type", typeof (_a = typeof core_2.AgmMap !== "undefined" && core_2.AgmMap) === "function" && _a || Object)
-    ], NewSightComponent.prototype, "agmMap", void 0);
-    NewSightComponent = __decorate([
-        core_1.Component({
-            selector: 'app-newsight',
-            template: __webpack_require__("../../../../../src/app/sight/sight.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/sight/sight.component.scss")]
-        }),
-        __metadata("design:paramtypes", [typeof (_b = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object, typeof (_d = typeof core_1.NgZone !== "undefined" && core_1.NgZone) === "function" && _d || Object, typeof (_e = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _e || Object])
-    ], NewSightComponent);
-    return NewSightComponent;
-    var _a, _b, _c, _d, _e;
-}());
-exports.NewSightComponent = NewSightComponent;
-//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/sight/sight.component.js.map
 
 /***/ }),
 
@@ -1389,6 +841,7 @@ var AppActions = /** @class */ (function () {
     AppActions.SET_VIEW_ORGANIZATION = "SET_VIEW_ORGANIZATION";
     AppActions.SET_NEW_POSTER = "SET_NEW_POSTER";
     AppActions.SET_VIEW_POST = "SET_VIEW_POST";
+    AppActions.SET_SUB_ROUTE = "SET_SUB_ROUTE";
     return AppActions;
 }());
 exports.AppActions = AppActions;
@@ -1655,6 +1108,9 @@ function ViewReducer(state, action) {
         case appActions_1.AppActions.CHANGE_CITY:
             newState.city = action.payload;
             return newState;
+        case appActions_1.AppActions.SET_SUB_ROUTE:
+            newState.subroute = action.payload;
+            return newState;
         default:
             return state;
     }
@@ -1679,7 +1135,8 @@ exports.INITIAL_USER_STATE = {
 exports.INITIAL_VIEW_STATE = {
     service: 'CityLive',
     city: 'San Diego',
-    school: 'UC San Diego'
+    school: 'UC San Diego',
+    subroute: 'experiences'
 };
 exports.INITIAL_DATA_STATE = {
     cityEntities: null,
@@ -1700,14 +1157,14 @@ exports.INITIAL_APP_STATE = {
 
 /***/ }),
 
-/***/ "../../../../../src/app/viewbusiness/viewbusiness.component.html":
+/***/ "../../../../../src/app/view/business/business.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header class=\"header header-5\">\n\t\t<div class=\"branding\">\n\t\t\t<span class=\"title\">MyLive</span>\n\t\t</div>\n\t\t<div class=\"header-actions\">\n\t\t\t<a (click)=\"logout()\" class=\"nav-link nav-text logout\">\n\t\t\t\tLogout\n\t\t\t</a>\n\t\t</div>\n\t</header>\n<form [formGroup]=\"model\">\n<div class=\"row row-align\">\n\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Business Name</label>\n\t\t\t\t\t<input formControlName=\"name\" type=\"text\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Logo Image</label>\n\t\t\t\t\t<img [src]=\"logo\" *ngIf=\"logo\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'logo')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Business Type</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Type\" size=\"45\" formControlName=\"type\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Business Ranking</label>\n\t\t\t\t\t<input type=\"number\" size=\"45\" formControlName=\"ranking\" min=\"1\" max=\"50\" placeholder=\"1-50\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Category</label>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Experiences\" formControlName=\"category\" value=\"Experiences\">\n\t\t\t\t\t\t<label for=\"Experiences\">Experiences</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Entertainment\" formControlName=\"category\" value=\"Entertainment\">\n\t\t\t\t\t\t<label for=\"Entertainment\">Entertainment</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Grub\" formControlName=\"category\" value=\"Grub\">\n\t\t\t\t\t\t<label for=\"Grub\">Grub</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"21+\" formControlName=\"category\" value=\"21+\">\n\t\t\t\t\t\t<label for=\"21+\">21+</label>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Location</label>\n\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"openMap = true; agmMap.triggerResize()\">Set Location</button>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 1</label>\n\t\t\t\t\t<img [src]=\"img1\" *ngIf=\"img1\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img1')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 2</label>\n\t\t\t\t\t<img [src]=\"img2\" *ngIf=\"img2\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img2')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 3</label>\n\t\t\t\t\t<img [src]=\"img3\" *ngIf=\"img3\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img3')\">\n\t\t\t\t</div>\n\t\t</div>\n\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Save</button>\n\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n</div>\n</form>\n\n<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" (click)=\"newPost()\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let post of posts | async\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"qualify(post)\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{post.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{post.description}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(post)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>\n\n<clr-modal [(clrModalOpen)]=\"openMap\">\n\t\t<h3 class=\"modal-title\">Business Address</h3>\n\t\t<div class=\"modal-body\">\n\t\t\t<input placeholder=\"Search for Location\" type=\"text\" (setAddress)=\"setAddress($event)\" googleplace size=\"45\" class=\"pad-bottom\">\n\t\t\t<agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"zoom\" #agmMap>\n\t\t\t\t<agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [markerDraggable]=\"true\" (dragEnd)=\"markerDragEnd(m, $event)\"></agm-marker>\n\t\t\t</agm-map>\n\t\t</div>\n\t\t<div class=\"modal-footer\">\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"openMap = false\">Save</button>\n\t\t</div>\n\t</clr-modal>"
+module.exports = "<app-header></app-header>\n<form [formGroup]=\"model\">\n<div class=\"row row-align\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t\t<h1>Edit Business</h1>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Business Name</label>\n\t\t\t\t\t<input formControlName=\"name\" type=\"text\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Logo Image</label>\n\t\t\t\t\t<img [src]=\"logo\" *ngIf=\"logo\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'logo')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Business Type</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Type\" size=\"45\" formControlName=\"type\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Business Ranking</label>\n\t\t\t\t\t<input type=\"number\" size=\"45\" formControlName=\"ranking\" min=\"1\" max=\"50\" placeholder=\"1-50\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Category</label>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Experiences\" formControlName=\"category\" value=\"Experiences\">\n\t\t\t\t\t\t<label for=\"Experiences\">Experiences</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Entertainment\" formControlName=\"category\" value=\"Entertainment\">\n\t\t\t\t\t\t<label for=\"Entertainment\">Entertainment</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Grub\" formControlName=\"category\" value=\"Grub\">\n\t\t\t\t\t\t<label for=\"Grub\">Grub</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"21+\" formControlName=\"category\" value=\"21+\">\n\t\t\t\t\t\t<label for=\"21+\">21+</label>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\" maxlength=\"100\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Location</label>\n\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"openMap = true; agmMap.triggerResize()\">Set Location</button>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 1</label>\n\t\t\t\t\t<img [src]=\"img1\" *ngIf=\"img1\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img1')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 2</label>\n\t\t\t\t\t<img [src]=\"img2\" *ngIf=\"img2\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img2')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 3</label>\n\t\t\t\t\t<img [src]=\"img3\" *ngIf=\"img3\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img3')\">\n\t\t\t\t</div>\n\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Save</button>\n\t\t\t\t<button type=\"submit\" class=\"btn btn-danger\" (click)=\"delete()\">Delete</button>\n\t\t\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n\t\t</div>\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t<h1>Posts</h1>\n\t\t\t<app-searchbox (change)=\"searchUpdate($event)\" [size]=\"25\"></app-searchbox>\n\t\t\t<button type=\"button\" class=\"btn btn-icon btn-primary\" (click)=\"newPost()\">\n\t\t\t    <clr-icon shape=\"plus\"></clr-icon>\n\t\t\t</button>\n\t\t\t<div class=\"row row-align\">\n\t\t\t\t<ng-container *ngFor=\"let post of posts | async\">\n\t\t\t\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"post | qualifytype: query\">\n\t\t\t\t\t\t<div class=\"card\">\n\t\t\t\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t\t\t\t{{post.name}}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t\t\t\t{{post.description}}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(post)\">View/Edit</button>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-container>\n\t\t\t</div>\n\t\t</div>\n\t\t\n</div>\n</form>\n\n\n\n<clr-modal [(clrModalOpen)]=\"openMap\">\n\t\t<h3 class=\"modal-title\">Business Address</h3>\n\t\t<div class=\"modal-body\">\n\t\t\t<input placeholder=\"Search for Location\" type=\"text\" (setAddress)=\"setAddress($event)\" googleplace size=\"45\" class=\"pad-bottom\">\n\t\t\t<agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"zoom\" #agmMap>\n\t\t\t\t<agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [markerDraggable]=\"true\" (dragEnd)=\"markerDragEnd(m, $event)\"></agm-marker>\n\t\t\t</agm-map>\n\t\t</div>\n\t\t<div class=\"modal-footer\">\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"openMap = false\">Save</button>\n\t\t</div>\n\t</clr-modal>"
 
 /***/ }),
 
-/***/ "../../../../../src/app/viewbusiness/viewbusiness.component.scss":
+/***/ "../../../../../src/app/view/business/business.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -1715,7 +1172,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n\n.logo-img {\n  width: 250px;\n  border: 2px solid transparent;\n  border-radius: 10%;\n  margin-top: 15px; }\n\nagm-map {\n  height: 300px; }\n\n.img-restrict {\n  max-height: 128px;\n  max-width: 128px; }\n", ""]);
+exports.push([module.i, ".logo-img {\n  width: 250px;\n  border: 2px solid transparent;\n  border-radius: 10%;\n  margin-top: 15px; }\n\n.pad-bottom {\n  margin-bottom: 6px; }\n", ""]);
 
 // exports
 
@@ -1725,7 +1182,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/viewbusiness/viewbusiness.component.ts":
+/***/ "../../../../../src/app/view/business/business.component.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1748,8 +1205,11 @@ var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/app
 var forms_1 = __webpack_require__("../../../forms/@angular/forms.es5.js");
 var core_2 = __webpack_require__("../../../../@agm/core/index.js");
 var firebase = __webpack_require__("../../../../firebase/firebase-browser.js");
+var functions_1 = __webpack_require__("../../../../../src/app/shared/functions/functions.ts");
+var ng2_img_tools_1 = __webpack_require__("../../../../ng2-img-tools/dist/ng2-img-tools.js");
 var ViewBusinessComponent = /** @class */ (function () {
-    function ViewBusinessComponent(db, store, router, ngZone) {
+    function ViewBusinessComponent(ng2ImgToolsService, db, store, router, ngZone) {
+        this.ng2ImgToolsService = ng2ImgToolsService;
         this.db = db;
         this.store = store;
         this.router = router;
@@ -1759,6 +1219,7 @@ var ViewBusinessComponent = /** @class */ (function () {
         this.query = '';
         this.zoom = 12;
         this.logo = null;
+        this.logo_resized = null;
         this.img1 = null;
         this.img2 = null;
         this.img3 = null;
@@ -1791,14 +1252,25 @@ var ViewBusinessComponent = /** @class */ (function () {
             _this.img3 = _this.business.image3_url;
             _this.posts = _this.db.list('/city_posts/' + _this.business.city, { query: { orderByChild: 'entity_id', equalTo: _this.business.$key } });
         });
+        this.store.select(function (state) {
+            return state.view;
+        }).subscribe(function (view) {
+            _this.subroute = view.subroute;
+        });
     };
     ViewBusinessComponent.prototype.selected = function (imageResult, dest) {
+        var _this = this;
         if (imageResult.error)
             alert(imageResult.error);
         this[dest] = imageResult.resized
             && imageResult.resized.dataURL
             || imageResult.dataURL;
-        this.pushFileToStorage(imageResult, dest);
+        this.pushFileToStorage(imageResult.file, dest);
+        this.ng2ImgToolsService.resize([imageResult.file], 50, 50).subscribe(function (result) {
+            _this.pushFileToStorage(result, 'logo_resized');
+        }, function (error) {
+            console.log(error);
+        });
     };
     ViewBusinessComponent.prototype.setAddress = function (place) {
         var _this = this;
@@ -1812,11 +1284,11 @@ var ViewBusinessComponent = /** @class */ (function () {
         this.latitude = $event.coords.lat;
         this.longitude = $event.coords.lng;
     };
-    ViewBusinessComponent.prototype.pushFileToStorage = function (imageResult, dest) {
+    ViewBusinessComponent.prototype.pushFileToStorage = function (file, dest) {
         var _this = this;
         var storageRef = firebase.storage().ref();
-        var uuid = this.generateUUID();
-        var uploadTask = storageRef.child(uuid + "_" + imageResult.file.name).put(imageResult.file);
+        var uuid = functions_1.generateUUID();
+        var uploadTask = storageRef.child(uuid + "_" + file.name).put(file);
         uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function (snapshot) {
             var snap = snapshot;
         }, function (error) {
@@ -1824,15 +1296,6 @@ var ViewBusinessComponent = /** @class */ (function () {
         }, function () {
             _this[dest] = uploadTask.snapshot.downloadURL;
         });
-    };
-    ViewBusinessComponent.prototype.generateUUID = function () {
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (d + Math.random() * 16) % 16 | 0;
-            d = Math.floor(d / 16);
-            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-        });
-        return uuid;
     };
     ViewBusinessComponent.prototype.submit = function () {
         if (this.model.valid) {
@@ -1848,7 +1311,6 @@ var ViewBusinessComponent = /** @class */ (function () {
                 ranking: this.model.value.ranking,
                 zipcode: this.business.zipcode || null,
                 description: this.model.value.description,
-                email: this.business.email || null,
                 phone: this.business.phone || null,
                 website: this.business.website || null,
                 category: this.model.value.category,
@@ -1861,7 +1323,7 @@ var ViewBusinessComponent = /** @class */ (function () {
                 category: this.model.value.category,
                 isOrg: false,
                 latitude: this.latitude,
-                logo_url: this.business.logo_url || null,
+                logo_url: this.logo_resized || null,
                 longitude: this.longitude,
                 name: this.model.value.name,
                 ranking: this.model.value.ranking,
@@ -1870,15 +1332,7 @@ var ViewBusinessComponent = /** @class */ (function () {
             };
             var client = this.db.list('/city_entities/' + this.business.city + '/');
             client.update(this.business.$key, clientModel);
-            this.router.navigate(['/admin']);
-        }
-    };
-    ViewBusinessComponent.prototype.qualify = function (entity) {
-        if (entity.type.toLowerCase().indexOf(this.query) > -1 || entity.name.toLowerCase().indexOf(this.query) > -1) {
-            return true;
-        }
-        else {
-            return false;
+            this.router.navigate(['/admin/' + this.subroute]);
         }
     };
     ViewBusinessComponent.prototype.searchUpdate = function (value) {
@@ -1889,20 +1343,30 @@ var ViewBusinessComponent = /** @class */ (function () {
             this.query = value.toLowerCase();
         }
     };
-    ViewBusinessComponent.prototype.logout = function () {
-        this.store.dispatch({ type: appActions_1.AppActions.LOGOUT, payload: null });
-        this.router.navigate(['login']);
-    };
     ViewBusinessComponent.prototype.newPost = function () {
         this.store.dispatch({ type: appActions_1.AppActions.SET_NEW_POSTER, payload: this.business });
-        this.router.navigate(['/post']);
+        this.router.navigate(['/new/post']);
     };
     ViewBusinessComponent.prototype.cancel = function () {
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/admin/' + this.subroute]);
+    };
+    ViewBusinessComponent.prototype.delete = function () {
+        var storageRef = firebase.storage().ref();
+        [this.logo, this.img1, this.img2, this.img3, this.logo_resized].forEach(function (img) {
+            if (functions_1.checkURL(img)) {
+                storageRef.child(functions_1.extractFireBaseFileName(img)).delete();
+            }
+        });
+        var info = this.db.list('/city_entities_info/' + this.business.city + '/');
+        info.remove(this.business.$key);
+        var client = this.db.list('/city_entities/' + this.business.city + '/');
+        client.remove(this.business.$key);
+        this.posts.remove();
+        this.router.navigate(['/admin/' + this.subroute]);
     };
     ViewBusinessComponent.prototype.edit = function (post) {
         this.store.dispatch({ type: appActions_1.AppActions.SET_VIEW_POST, payload: post });
-        this.router.navigate(['/viewpost']);
+        this.router.navigate(['/view/post']);
     };
     __decorate([
         core_1.ViewChild('agmMap'),
@@ -1911,27 +1375,27 @@ var ViewBusinessComponent = /** @class */ (function () {
     ViewBusinessComponent = __decorate([
         core_1.Component({
             selector: 'app-viewbusiness',
-            template: __webpack_require__("../../../../../src/app/viewbusiness/viewbusiness.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/viewbusiness/viewbusiness.component.scss")]
+            template: __webpack_require__("../../../../../src/app/view/business/business.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/view/business/business.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _b || Object, typeof (_c = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _c || Object, typeof (_d = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _d || Object, typeof (_e = typeof core_1.NgZone !== "undefined" && core_1.NgZone) === "function" && _e || Object])
+        __metadata("design:paramtypes", [typeof (_b = typeof ng2_img_tools_1.Ng2ImgToolsService !== "undefined" && ng2_img_tools_1.Ng2ImgToolsService) === "function" && _b || Object, typeof (_c = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _c || Object, typeof (_d = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _d || Object, typeof (_e = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _e || Object, typeof (_f = typeof core_1.NgZone !== "undefined" && core_1.NgZone) === "function" && _f || Object])
     ], ViewBusinessComponent);
     return ViewBusinessComponent;
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f;
 }());
 exports.ViewBusinessComponent = ViewBusinessComponent;
-//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/viewbusiness/viewbusiness.component.js.map
+//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/view/business/business.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/vieworganization/vieworganization.component.html":
+/***/ "../../../../../src/app/view/organization/organization.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header class=\"header header-5\">\n\t\t<div class=\"branding\">\n\t\t\t<span class=\"title\">MyLive</span>\n\t\t</div>\n\t\t<div class=\"header-actions\">\n\t\t\t<a (click)=\"logout()\" class=\"nav-link nav-text logout\">\n\t\t\t\tLogout\n\t\t\t</a>\n\t\t</div>\n\t</header>\n<form [formGroup]=\"model\">\n<div class=\"row row-align\">\n\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Organization Name</label>\n\t\t\t\t\t<input formControlName=\"name\" type=\"text\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Logo Image</label>\n\t\t\t\t\t<img [src]=\"logo\" *ngIf=\"logo\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'logo')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Organization Type</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Type\" size=\"45\" formControlName=\"type\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Organization Ranking</label>\n\t\t\t\t\t<input type=\"number\" size=\"45\" formControlName=\"ranking\" min=\"1\" max=\"50\" placeholder=\"1-50\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Category</label>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"CampusAffiliated\" formControlName=\"category\" value=\"Campus Affiliated\">\n\t\t\t\t\t\t<label for=\"CampusAffiliated\">Campus Affiliated</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Organizations\" formControlName=\"category\" value=\"Campus Organization\">\n\t\t\t\t\t\t<label for=\"Organizations\">Organizations</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Businesses\" formControlName=\"category\" value=\"Business\">\n\t\t\t\t\t\t<label for=\"Businesses\">Businesses</label>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Email</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"me@example.com\" size=\"45\" formControlName=\"email\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Website</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"example.com\" size=\"45\" formControlName=\"website\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 1</label>\n\t\t\t\t\t<img [src]=\"img1\" *ngIf=\"img1\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img1')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 2</label>\n\t\t\t\t\t<img [src]=\"img2\" *ngIf=\"img2\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img2')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 3</label>\n\t\t\t\t\t<img [src]=\"img3\" *ngIf=\"img3\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img3')\">\n\t\t\t\t</div>\n\t\t</div>\n\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Save</button>\n\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n</div>\n</form>\n\n<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" (click)=\"newPost()\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let post of posts | async\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"qualify(post)\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{post.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{post.description}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(post)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
+module.exports = "<app-header></app-header>\n<form [formGroup]=\"model\">\n<div class=\"row row-align\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t\t<h1>Edit Organization</h1>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Organization Name</label>\n\t\t\t\t\t<input formControlName=\"name\" type=\"text\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Logo Image</label>\n\t\t\t\t\t<img [src]=\"logo\" *ngIf=\"logo\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'logo')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Organization Type</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Type\" size=\"45\" formControlName=\"type\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Organization Ranking</label>\n\t\t\t\t\t<input type=\"number\" size=\"45\" formControlName=\"ranking\" min=\"1\" max=\"50\" placeholder=\"1-50\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Category</label>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"CampusAffiliated\" formControlName=\"category\" value=\"Campus Affiliated\">\n\t\t\t\t\t\t<label for=\"CampusAffiliated\">Campus Affiliated</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Organizations\" formControlName=\"category\" value=\"Campus Organization\">\n\t\t\t\t\t\t<label for=\"Organizations\">Organizations</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"category\" id=\"Businesses\" formControlName=\"category\" value=\"Business\">\n\t\t\t\t\t\t<label for=\"Businesses\">Businesses</label>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\" *ngIf=\"model.value.category != 'Business'\">\n\t\t\t\t\t<label>Email</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"me@example.com\" size=\"45\" formControlName=\"email\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Website</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"example.com\" size=\"45\" formControlName=\"website\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\" maxlength=\"100\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 1</label>\n\t\t\t\t\t<img [src]=\"img1\" *ngIf=\"img1\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img1')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 2</label>\n\t\t\t\t\t<img [src]=\"img2\" *ngIf=\"img2\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img2')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 3</label>\n\t\t\t\t\t<img [src]=\"img3\" *ngIf=\"img3\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img3')\">\n\t\t\t\t</div>\n\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Save</button>\n\t\t\t\t<button type=\"submit\" class=\"btn btn-danger\" (click)=\"delete()\">Delete</button>\n\t\t\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n\t\t</div>\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t<h1>Posts</h1>\n\t\t\t<app-searchbox (change)=\"searchUpdate($event)\" [size]=\"25\"></app-searchbox>\n\t\t\t<button type=\"button\" class=\"btn btn-icon btn-primary\" (click)=\"newPost()\">\n\t\t\t    <clr-icon shape=\"plus\"></clr-icon>\n\t\t\t</button>\n\t\t\t<div class=\"row row-align\">\n\t\t\t\t<ng-container *ngFor=\"let post of posts | async\">\n\t\t\t\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"post | qualifytype: query\">\n\t\t\t\t\t\t<div class=\"card\">\n\t\t\t\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t\t\t\t{{post.name}}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t\t\t\t{{post.description}}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(post)\">View/Edit</button>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-container>\n\t\t\t</div>\n\t\t</div>\n\t\t\n</div>\n</form>\n\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/vieworganization/vieworganization.component.scss":
+/***/ "../../../../../src/app/view/organization/organization.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -1939,7 +1403,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n\n.logo-img {\n  width: 250px;\n  border: 2px solid transparent;\n  border-radius: 10%;\n  margin-top: 15px; }\n\nagm-map {\n  height: 300px; }\n\n.img-restrict {\n  max-height: 128px;\n  max-width: 128px; }\n", ""]);
+exports.push([module.i, ".logo-img {\n  width: 250px;\n  border: 2px solid transparent;\n  border-radius: 10%;\n  margin-top: 15px; }\n", ""]);
 
 // exports
 
@@ -1949,7 +1413,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/vieworganization/vieworganization.component.ts":
+/***/ "../../../../../src/app/view/organization/organization.component.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1971,13 +1435,17 @@ var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
 var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var forms_1 = __webpack_require__("../../../forms/@angular/forms.es5.js");
 var firebase = __webpack_require__("../../../../firebase/firebase-browser.js");
+var functions_1 = __webpack_require__("../../../../../src/app/shared/functions/functions.ts");
+var ng2_img_tools_1 = __webpack_require__("../../../../ng2-img-tools/dist/ng2-img-tools.js");
 var ViewOrganizationComponent = /** @class */ (function () {
-    function ViewOrganizationComponent(db, store, router) {
+    function ViewOrganizationComponent(ng2ImgToolsService, db, store, router) {
+        this.ng2ImgToolsService = ng2ImgToolsService;
         this.db = db;
         this.store = store;
         this.router = router;
         this.query = '';
         this.logo = null;
+        this.logo_resized = null;
         this.img1 = null;
         this.img2 = null;
         this.img3 = null;
@@ -1991,7 +1459,7 @@ var ViewOrganizationComponent = /** @class */ (function () {
             ranking: new forms_1.FormControl(1, forms_1.Validators.required),
             description: new forms_1.FormControl(''),
             category: new forms_1.FormControl('', forms_1.Validators.required),
-            email: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.email]),
+            email: new forms_1.FormControl('', forms_1.Validators.email),
             website: new forms_1.FormControl('', forms_1.Validators.required)
         });
     }
@@ -2006,7 +1474,12 @@ var ViewOrganizationComponent = /** @class */ (function () {
             _this.img1 = _this.organization.image1_url;
             _this.img2 = _this.organization.image2_url;
             _this.img3 = _this.organization.image3_url;
-            _this.posts = _this.db.list('/school_posts/' + _this.getCity(_this.organization.school) + '/' + _this.organization.school + '/', { query: { orderByChild: 'entity_id', equalTo: _this.organization.$key } });
+            _this.posts = _this.db.list('/school_posts/' + functions_1.getCity(_this.organization.school) + '/' + _this.organization.school + '/', { query: { orderByChild: 'entity_id', equalTo: _this.organization.$key } });
+        });
+        this.store.select(function (state) {
+            return state.view;
+        }).subscribe(function (view) {
+            _this.subroute = view.subroute;
         });
     };
     ViewOrganizationComponent.prototype.submit = function () {
@@ -2027,33 +1500,39 @@ var ViewOrganizationComponent = /** @class */ (function () {
                 zipcode: this.organization.zipcode || null,
                 description: this.model.value.description
             };
-            var info = this.db.list('/school_entities_info/' + this.getCity(this.organization.school) + '/' + this.organization.school + '/');
+            var info = this.db.list('/school_entities_info/' + functions_1.getCity(this.organization.school) + '/' + this.organization.school + '/');
             info.update(this.organization.$key, submissionModel);
             var clientModel = {
                 category: this.model.value.category,
                 isOrg: true,
-                logo_url: this.organization.logo_url || null,
+                logo_url: this.logo_resized || null,
                 name: this.model.value.name,
                 ranking: this.model.value.ranking,
                 type: this.model.value.type
             };
-            var client = this.db.list('/school_entities/' + this.getCity(this.organization.school) + '/' + this.organization.school + '/');
+            var client = this.db.list('/school_entities/' + functions_1.getCity(this.organization.school) + '/' + this.organization.school + '/');
             client.update(this.organization.$key, clientModel);
-            this.router.navigate(['/admin/campus']);
+            this.router.navigate(['/admin/' + this.subroute]);
         }
     };
     ViewOrganizationComponent.prototype.selected = function (imageResult, dest) {
+        var _this = this;
         if (imageResult.error)
             alert(imageResult.error);
         this[dest] = imageResult.resized
             && imageResult.resized.dataURL
             || imageResult.dataURL;
         this.pushFileToStorage(imageResult, dest);
+        this.ng2ImgToolsService.resize([imageResult.file], 50, 50).subscribe(function (result) {
+            _this.pushFileToStorage(result, 'logo_resized');
+        }, function (error) {
+            console.log(error);
+        });
     };
     ViewOrganizationComponent.prototype.pushFileToStorage = function (imageResult, dest) {
         var _this = this;
         var storageRef = firebase.storage().ref();
-        var uuid = this.generateUUID();
+        var uuid = functions_1.generateUUID();
         var uploadTask = storageRef.child(uuid + "_" + imageResult.file.name).put(imageResult.file);
         uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function (snapshot) {
             var snap = snapshot;
@@ -2063,23 +1542,6 @@ var ViewOrganizationComponent = /** @class */ (function () {
             _this[dest] = uploadTask.snapshot.downloadURL;
         });
     };
-    ViewOrganizationComponent.prototype.generateUUID = function () {
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (d + Math.random() * 16) % 16 | 0;
-            d = Math.floor(d / 16);
-            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-        });
-        return uuid;
-    };
-    ViewOrganizationComponent.prototype.qualify = function (entity) {
-        if (entity.type.toLowerCase().indexOf(this.query) > -1 || entity.name.toLowerCase().indexOf(this.query) > -1) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    };
     ViewOrganizationComponent.prototype.searchUpdate = function (value) {
         if (value.target) {
             this.query = value.target.value.toLowerCase();
@@ -2088,56 +1550,55 @@ var ViewOrganizationComponent = /** @class */ (function () {
             this.query = value.toLowerCase();
         }
     };
-    ViewOrganizationComponent.prototype.getCity = function (school) {
-        if (school == 'UC San Diego') {
-            return 'San Diego';
-        }
-        else if (school == 'UC Santa Barbara') {
-            return 'Santa Barbara';
-        }
-        else if (school == 'UC Davis') {
-            return 'Davis';
-        }
-    };
-    ViewOrganizationComponent.prototype.logout = function () {
-        this.store.dispatch({ type: appActions_1.AppActions.LOGOUT, payload: null });
-        this.router.navigate(['login']);
-    };
     ViewOrganizationComponent.prototype.newPost = function () {
         this.store.dispatch({ type: appActions_1.AppActions.SET_NEW_POSTER, payload: this.organization });
-        this.router.navigate(['/post']);
+        this.router.navigate(['/new/post']);
     };
     ViewOrganizationComponent.prototype.cancel = function () {
-        this.router.navigate(['/admin/campus']);
+        this.router.navigate(['/admin/' + this.subroute]);
+    };
+    ViewOrganizationComponent.prototype.delete = function () {
+        var storageRef = firebase.storage().ref();
+        [this.logo, this.img1, this.img2, this.img3, this.logo_resized].forEach(function (img) {
+            if (functions_1.checkURL(img)) {
+                storageRef.child(functions_1.extractFireBaseFileName(img)).delete();
+            }
+        });
+        var info = this.db.list('/school_entities_info/' + functions_1.getCity(this.organization.school) + '/' + this.organization.school + '/');
+        info.remove(this.organization.$key);
+        var client = this.db.list('/school_entities/' + functions_1.getCity(this.organization.school) + '/' + this.organization.school + '/');
+        client.remove(this.organization.$key);
+        this.posts.remove();
+        this.router.navigate(['/admin/' + this.subroute]);
     };
     ViewOrganizationComponent.prototype.edit = function (post) {
         this.store.dispatch({ type: appActions_1.AppActions.SET_VIEW_POST, payload: post });
-        this.router.navigate(['/viewpost']);
+        this.router.navigate(['/view/post']);
     };
     ViewOrganizationComponent = __decorate([
         core_1.Component({
             selector: 'app-vieworganization',
-            template: __webpack_require__("../../../../../src/app/vieworganization/vieworganization.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/vieworganization/vieworganization.component.scss")]
+            template: __webpack_require__("../../../../../src/app/view/organization/organization.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/view/organization/organization.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _a || Object, typeof (_b = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof ng2_img_tools_1.Ng2ImgToolsService !== "undefined" && ng2_img_tools_1.Ng2ImgToolsService) === "function" && _a || Object, typeof (_b = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _b || Object, typeof (_c = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _c || Object, typeof (_d = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _d || Object])
     ], ViewOrganizationComponent);
     return ViewOrganizationComponent;
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
 }());
 exports.ViewOrganizationComponent = ViewOrganizationComponent;
-//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/vieworganization/vieworganization.component.js.map
+//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/view/organization/organization.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/viewpost/viewpost.component.html":
+/***/ "../../../../../src/app/view/post/post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"model\" class=\"unpad\">\n\t<header class=\"header header-5\">\n\t\t<div class=\"branding\">\n\t\t\t<span class=\"title\">MyLive</span>\n\t\t</div>\n\t\t<div class=\"header-actions\">\n\t\t\t<a (click)=\"logout()\" class=\"nav-link nav-text logout\">\n\t\t\t\tLogout\n\t\t\t</a>\n\t\t</div>\n\t</header>\n\t<div class=\"row row-align\">\n\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t<section class=\"form-block\">\n\t\t\t\t<label>Edit Post for {{this.post.location}}</label>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Post Title</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Name\" size=\"45\" formControlName=\"name\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\" *ngIf=\"model.value.type == 'Experience'\">\n\t\t\t\t\t<label class=\"required\">Experience Image</label>\n\t\t\t\t\t<img [src]=\"logo\" *ngIf=\"logo\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'logo')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\" *ngIf=\"viewState.service == 'CampusLive'\">\n\t\t\t\t\t<label class=\"required\">Location</label>\n\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"openMap = true; agmMap.triggerResize()\">Set Location</button>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Post Type</label>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Event\" formControlName=\"type\" value=\"Event\">\n\t\t\t\t\t\t<label for=\"Event\">Event</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Deal\" formControlName=\"type\" value=\"Deal\">\n\t\t\t\t\t\t<label for=\"Deal\">Deal</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Experience\" formControlName=\"type\" value=\"Experience\">\n\t\t\t\t\t\t<label for=\"Experience\">Experience</label>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Start Date/Time</label>\n\t\t\t\t\t<input type=\"datetime-local\" formControlName=\"start_date\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">End Date/Time</label>\n\t\t\t\t\t<input type=\"datetime-local\" formControlName=\"end_date\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Deal/Purchase Page URL</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"http://example.com\" size=\"45\" formControlName=\"website\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t            <label>Featured</label>\n\t\t            <div class=\"radio-inline\">\n\t\t                <input type=\"checkbox\" name=\"isFeatured\" id=\"isFeatured\" formControlName=\"isFeatured\">\n\t\t            </div>\n\t\t        </div>\n\t\t\t</section>\n\t\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Save</button>\n\t\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n\t\t</div>\n\t</div>\n\n\t<clr-modal [(clrModalOpen)]=\"openMap\">\n\t\t<h3 class=\"modal-title\">Business Address</h3>\n\t\t<div class=\"modal-body\">\n\t\t\t<input placeholder=\"Search for Location\" type=\"text\" (setAddress)=\"setAddress($event)\" googleplace size=\"45\" class=\"pad-bottom\">\n\t\t\t<agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"zoom\" #agmMap>\n\t\t\t\t<agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [markerDraggable]=\"true\" (dragEnd)=\"markerDragEnd(m, $event)\"></agm-marker>\n\t\t\t</agm-map>\n\t\t</div>\n\t\t<div class=\"modal-footer\">\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"openMap = false\">Save</button>\n\t\t</div>\n\t</clr-modal>"
+module.exports = "<app-header></app-header>\n<form [formGroup]=\"model\" class=\"unpad\">\n\t<div class=\"row row-align\">\n\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t<section class=\"form-block\">\n\t\t\t\t<label>Edit Post for {{this.post.location}}</label>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Post Title</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Name\" size=\"45\" formControlName=\"name\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\" *ngIf=\"model.value.type == 'Experience'\">\n\t\t\t\t\t<label class=\"required\">Experience Image</label>\n\t\t\t\t\t<img [src]=\"logo\" *ngIf=\"logo\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'logo')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\" *ngIf=\"viewState.service == 'CampusLive'\">\n\t\t\t\t\t<label class=\"required\">Location</label>\n\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"openMap = true; agmMap.triggerResize()\">Set Location</button>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Post Type</label>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Event\" formControlName=\"type\" value=\"Event\">\n\t\t\t\t\t\t<label for=\"Event\">Event</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Deal\" formControlName=\"type\" value=\"Deal\">\n\t\t\t\t\t\t<label for=\"Deal\">Deal</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Experience\" formControlName=\"type\" value=\"Experience\">\n\t\t\t\t\t\t<label for=\"Experience\">Experience</label>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Start Date/Time</label>\n\t\t\t\t\t<input type=\"datetime-local\" formControlName=\"start_date\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">End Date/Time</label>\n\t\t\t\t\t<input type=\"datetime-local\" formControlName=\"end_date\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\" maxlength=\"250\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Deal/Purchase Page URL</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"http://example.com\" size=\"45\" formControlName=\"website\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t            <label>Featured</label>\n\t\t            <div class=\"radio-inline\">\n\t\t                <input type=\"checkbox\" name=\"isFeatured\" id=\"isFeatured\" formControlName=\"isFeatured\">\n\t\t            </div>\n\t\t        </div>\n\t\t\t</section>\n\t\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Save</button>\n\t\t\t<button type=\"submit\" class=\"btn btn-danger\" (click)=\"delete()\">Delete</button>\n\t\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n\t\t</div>\n\t</div>\n\n\t<clr-modal [(clrModalOpen)]=\"openMap\">\n\t\t<h3 class=\"modal-title\">Business Address</h3>\n\t\t<div class=\"modal-body\">\n\t\t\t<input placeholder=\"Search for Location\" type=\"text\" (setAddress)=\"setAddress($event)\" googleplace size=\"45\" class=\"pad-bottom\">\n\t\t\t<agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"zoom\" #agmMap>\n\t\t\t\t<agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [markerDraggable]=\"true\" (dragEnd)=\"markerDragEnd(m, $event)\"></agm-marker>\n\t\t\t</agm-map>\n\t\t</div>\n\t\t<div class=\"modal-footer\">\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"openMap = false\">Save</button>\n\t\t</div>\n\t</clr-modal>"
 
 /***/ }),
 
-/***/ "../../../../../src/app/viewpost/viewpost.component.scss":
+/***/ "../../../../../src/app/view/post/post.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -2145,7 +1606,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".logout {\n  cursor: pointer; }\n\n.row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n\nagm-map {\n  height: 300px; }\n\n.pad-bottom {\n  margin-bottom: 6px; }\n\n.unpad {\n  padding: 0; }\n\n.img-restrict {\n  max-height: 128px;\n  max-width: 128px; }\n", ""]);
+exports.push([module.i, ".pad-bottom {\n  margin-bottom: 6px; }\n", ""]);
 
 // exports
 
@@ -2155,7 +1616,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/viewpost/viewpost.component.ts":
+/***/ "../../../../../src/app/view/post/post.component.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2172,12 +1633,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
 var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
-var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var forms_1 = __webpack_require__("../../../forms/@angular/forms.es5.js");
 var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
 var core_2 = __webpack_require__("../../../../@agm/core/index.js");
 var firebase = __webpack_require__("../../../../firebase/firebase-browser.js");
 var database_1 = __webpack_require__("../../../../angularfire2/database.js");
+var functions_1 = __webpack_require__("../../../../../src/app/shared/functions/functions.ts");
 var ViewPostComponent = /** @class */ (function () {
     function ViewPostComponent(store, router, ngZone, db) {
         this.store = store;
@@ -2249,7 +1710,7 @@ var ViewPostComponent = /** @class */ (function () {
     ViewPostComponent.prototype.pushFileToStorage = function (imageResult, dest) {
         var _this = this;
         var storageRef = firebase.storage().ref();
-        var uuid = this.generateUUID();
+        var uuid = functions_1.generateUUID();
         var uploadTask = storageRef.child(uuid + "_" + imageResult.file.name).put(imageResult.file);
         uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function (snapshot) {
             var snap = snapshot;
@@ -2259,19 +1720,10 @@ var ViewPostComponent = /** @class */ (function () {
             _this[dest] = uploadTask.snapshot.downloadURL;
         });
     };
-    ViewPostComponent.prototype.generateUUID = function () {
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (d + Math.random() * 16) % 16 | 0;
-            d = Math.floor(d / 16);
-            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-        });
-        return uuid;
-    };
     ViewPostComponent.prototype.submit = function () {
         if (this.model.valid) {
             var submissionModel = {
-                logo_url: this.logo,
+                logo_url: this.logo || null,
                 longitude: this.longitude,
                 latitude: this.latitude,
                 isEntityOrg: this.post.isEntityOrg,
@@ -2286,38 +1738,41 @@ var ViewPostComponent = /** @class */ (function () {
                 entity_id: this.post.entity_id
             };
             if (this.viewState.service == 'CampusLive') {
-                var info = this.db.list('/school_posts/' + this.getCity(this.viewState.school) + '/' + this.viewState.school + '/');
+                var info = this.db.list('/school_posts/' + functions_1.getCity(this.viewState.school) + '/' + this.viewState.school + '/');
                 info.update(this.post.$key, submissionModel);
-                this.router.navigate(['/vieworganization']);
+                this.router.navigate(['/view/organization']);
             }
             else {
                 var info = this.db.list('/city_posts/' + this.viewState.city + '/');
                 info.update(this.post.$key, submissionModel);
-                this.router.navigate(['/viewbusiness']);
+                this.router.navigate(['/view/business']);
             }
         }
     };
-    ViewPostComponent.prototype.getCity = function (school) {
-        if (school == 'UC San Diego') {
-            return 'San Diego';
+    ViewPostComponent.prototype.delete = function () {
+        var storageRef = firebase.storage().ref();
+        [this.logo].forEach(function (img) {
+            if (functions_1.checkURL(img)) {
+                storageRef.child(functions_1.extractFireBaseFileName(img)).delete();
+            }
+        });
+        if (this.viewState.service == 'CampusLive') {
+            var info = this.db.list('/school_posts/' + functions_1.getCity(this.viewState.school) + '/' + this.viewState.school + '/');
+            info.remove(this.post.$key);
+            this.router.navigate(['/view/organization']);
         }
-        else if (school == 'UC Santa Barbara') {
-            return 'Santa Barbara';
+        else {
+            var info = this.db.list('/city_posts/' + this.viewState.city + '/');
+            info.remove(this.post.$key);
+            this.router.navigate(['/view/business']);
         }
-        else if (school == 'UC Davis') {
-            return 'Davis';
-        }
-    };
-    ViewPostComponent.prototype.logout = function () {
-        this.store.dispatch({ type: appActions_1.AppActions.LOGOUT, payload: null });
-        this.router.navigate(['login']);
     };
     ViewPostComponent.prototype.cancel = function () {
         if (this.viewState.service == 'CampusLive') {
-            this.router.navigate(['/vieworganization']);
+            this.router.navigate(['/view/organization']);
         }
         else {
-            this.router.navigate(['/viewbusiness']);
+            this.router.navigate(['/view/business']);
         }
     };
     __decorate([
@@ -2327,8 +1782,8 @@ var ViewPostComponent = /** @class */ (function () {
     ViewPostComponent = __decorate([
         core_1.Component({
             selector: 'app-viewpost',
-            template: __webpack_require__("../../../../../src/app/viewpost/viewpost.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/viewpost/viewpost.component.scss")]
+            template: __webpack_require__("../../../../../src/app/view/post/post.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/view/post/post.component.scss")]
         }),
         __metadata("design:paramtypes", [typeof (_b = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object, typeof (_d = typeof core_1.NgZone !== "undefined" && core_1.NgZone) === "function" && _d || Object, typeof (_e = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _e || Object])
     ], ViewPostComponent);
@@ -2336,18 +1791,18 @@ var ViewPostComponent = /** @class */ (function () {
     var _a, _b, _c, _d, _e;
 }());
 exports.ViewPostComponent = ViewPostComponent;
-//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/viewpost/viewpost.component.js.map
+//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/view/post/post.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/viewsight/viewsight.component.html":
+/***/ "../../../../../src/app/view/sight/sight.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header class=\"header header-5\">\n\t\t<div class=\"branding\">\n\t\t\t<span class=\"title\">MyLive</span>\n\t\t</div>\n\t\t<div class=\"header-actions\">\n\t\t\t<a (click)=\"logout()\" class=\"nav-link nav-text logout\">\n\t\t\t\tLogout\n\t\t\t</a>\n\t\t</div>\n\t</header>\n<form [formGroup]=\"model\">\n<div class=\"row row-align\">\n\t\t<div class=\"col-lg-8 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t<input formControlName=\"name\" type=\"text\">\n\t\t</div>\n\t\t<div class=\"col-lg-4 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"sight.logo_url\">\n\t\t\t<img src={{sight.logo_url}} class=\"logo-img\">\n\t\t</div>\n\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Sight Type</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Type\" size=\"45\" formControlName=\"type\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Sight Ranking</label>\n\t\t\t\t\t<input type=\"number\" size=\"45\" formControlName=\"ranking\" min=\"1\" max=\"50\" placeholder=\"1-50\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Location</label>\n\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"openMap = true; agmMap.triggerResize()\">Set Location</button>\n\t\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-lg-4 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"sight.image1_url\">\n\t\t\t<img src={{sight.image1_url}} class=\"logo-img\">\n\t\t</div>\n\t\t<div class=\"col-lg-4 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"sight.image2_url\">\n\t\t\t<img src={{sight.image2_url}} class=\"logo-img\">\n\t\t</div>\n\t\t<div class=\"col-lg-4 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"sight.image3_url\">\n\t\t\t<img src={{sight.image3_url}} class=\"logo-img\">\n\t\t</div>\n\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Save</button>\n\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n</div>\n</form>\n\n<clr-modal [(clrModalOpen)]=\"openMap\">\n\t\t<h3 class=\"modal-title\">Sight Address</h3>\n\t\t<div class=\"modal-body\">\n\t\t\t<input placeholder=\"Search for Location\" type=\"text\" (setAddress)=\"setAddress($event)\" googleplace size=\"45\" class=\"pad-bottom\">\n\t\t\t<agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"zoom\" #agmMap>\n\t\t\t\t<agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [markerDraggable]=\"true\" (dragEnd)=\"markerDragEnd(m, $event)\"></agm-marker>\n\t\t\t</agm-map>\n\t\t</div>\n\t\t<div class=\"modal-footer\">\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"openMap = false\">Save</button>\n\t\t</div>\n\t</clr-modal>"
+module.exports = "<app-header></app-header>\n<form [formGroup]=\"model\">\n<div class=\"row row-align\">\n\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t\t<h1>Edit Sight</h1>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Sight Name</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Name\" size=\"45\" formControlName=\"name\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Logo Image</label>\n\t\t\t\t\t<img [src]=\"logo\" *ngIf=\"logo\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'logo')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Sight Type</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Type\" size=\"45\" formControlName=\"type\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Sight Ranking</label>\n\t\t\t\t\t<input type=\"number\" size=\"45\" formControlName=\"ranking\" min=\"1\" max=\"50\" placeholder=\"1-50\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\" maxlength=\"100\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Location</label>\n\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"openMap = true; agmMap.triggerResize()\">Set Location</button>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 1</label>\n\t\t\t\t\t<img [src]=\"img1\" *ngIf=\"img1\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img1')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 2</label>\n\t\t\t\t\t<img [src]=\"img2\" *ngIf=\"img2\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img2')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Featured Image 3</label>\n\t\t\t\t\t<img [src]=\"img3\" *ngIf=\"img3\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'img3')\">\n\t\t\t\t</div>\n\t\t</div>\n\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Save</button>\n\t\t<button type=\"submit\" class=\"btn btn-danger\" (click)=\"delete()\">Delete</button>\n\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n</div>\n</form>\n\n<clr-modal [(clrModalOpen)]=\"openMap\">\n\t\t<h3 class=\"modal-title\">Sight Address</h3>\n\t\t<div class=\"modal-body\">\n\t\t\t<input placeholder=\"Search for Location\" type=\"text\" (setAddress)=\"setAddress($event)\" googleplace size=\"45\" class=\"pad-bottom\">\n\t\t\t<agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"zoom\" #agmMap>\n\t\t\t\t<agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [markerDraggable]=\"true\" (dragEnd)=\"markerDragEnd(m, $event)\"></agm-marker>\n\t\t\t</agm-map>\n\t\t</div>\n\t\t<div class=\"modal-footer\">\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"openMap = false\">Save</button>\n\t\t</div>\n\t</clr-modal>"
 
 /***/ }),
 
-/***/ "../../../../../src/app/viewsight/viewsight.component.scss":
+/***/ "../../../../../src/app/view/sight/sight.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -2355,7 +1810,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n\n.logo-img {\n  width: 250px;\n  border: 2px solid transparent;\n  border-radius: 10%;\n  margin-top: 15px; }\n\nagm-map {\n  height: 300px; }\n", ""]);
+exports.push([module.i, ".logo-img {\n  width: 250px;\n  border: 2px solid transparent;\n  border-radius: 10%;\n  margin-top: 15px; }\n", ""]);
 
 // exports
 
@@ -2365,7 +1820,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/viewsight/viewsight.component.ts":
+/***/ "../../../../../src/app/view/sight/sight.component.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2384,9 +1839,10 @@ var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
 var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
 var database_1 = __webpack_require__("../../../../angularfire2/database.js");
 var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
-var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var forms_1 = __webpack_require__("../../../forms/@angular/forms.es5.js");
 var core_2 = __webpack_require__("../../../../@agm/core/index.js");
+var firebase = __webpack_require__("../../../../firebase/firebase-browser.js");
+var functions_1 = __webpack_require__("../../../../../src/app/shared/functions/functions.ts");
 var ViewSightComponent = /** @class */ (function () {
     function ViewSightComponent(db, store, router, ngZone) {
         this.db = db;
@@ -2396,6 +1852,10 @@ var ViewSightComponent = /** @class */ (function () {
         this.latitude = 39.8282;
         this.longitude = -98.5795;
         this.zoom = 12;
+        this.logo = null;
+        this.img1 = null;
+        this.img2 = null;
+        this.img3 = null;
         this.model = new forms_1.FormGroup({
             name: new forms_1.FormControl('', forms_1.Validators.required),
             type: new forms_1.FormControl('', forms_1.Validators.required),
@@ -2414,6 +1874,31 @@ var ViewSightComponent = /** @class */ (function () {
                 _this.longitude = data.viewSight.longitude;
                 _this.latitude = data.viewSight.latitude;
             });
+            _this.logo = _this.sight.logo_url;
+            _this.img1 = _this.sight.image1_url;
+            _this.img2 = _this.sight.image2_url;
+            _this.img3 = _this.sight.image3_url;
+        });
+    };
+    ViewSightComponent.prototype.selected = function (imageResult, dest) {
+        if (imageResult.error)
+            alert(imageResult.error);
+        this[dest] = imageResult.resized
+            && imageResult.resized.dataURL
+            || imageResult.dataURL;
+        this.pushFileToStorage(imageResult, dest);
+    };
+    ViewSightComponent.prototype.pushFileToStorage = function (imageResult, dest) {
+        var _this = this;
+        var storageRef = firebase.storage().ref();
+        var uuid = functions_1.generateUUID();
+        var uploadTask = storageRef.child(uuid + "_" + imageResult.file.name).put(imageResult.file);
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function (snapshot) {
+            var snap = snapshot;
+        }, function (error) {
+            console.log(error);
+        }, function () {
+            _this[dest] = uploadTask.snapshot.downloadURL;
         });
     };
     ViewSightComponent.prototype.setAddress = function (place) {
@@ -2431,12 +1916,12 @@ var ViewSightComponent = /** @class */ (function () {
     ViewSightComponent.prototype.submit = function () {
         if (this.model.valid) {
             var submissionModel = {
-                logo_url: this.sight.logo_url || null,
+                logo_url: this.logo || null,
                 longitude: this.longitude,
                 latitude: this.latitude,
-                image1_url: this.sight.image1_url || null,
-                image2_url: this.sight.image2_url || null,
-                image3_url: this.sight.image3_url || null,
+                image1_url: this.img1 || null,
+                image2_url: this.img2 || null,
+                image3_url: this.img3 || null,
                 name: this.model.value.name,
                 type: this.model.value.type,
                 ranking: this.model.value.ranking,
@@ -2448,9 +1933,16 @@ var ViewSightComponent = /** @class */ (function () {
             this.router.navigate(['/admin/sights']);
         }
     };
-    ViewSightComponent.prototype.logout = function () {
-        this.store.dispatch({ type: appActions_1.AppActions.LOGOUT, payload: null });
-        this.router.navigate(['login']);
+    ViewSightComponent.prototype.delete = function () {
+        var storageRef = firebase.storage().ref();
+        [this.sight.logo_url, this.sight.image1_url, this.sight.image2_url, this.sight.image3_url].forEach(function (img) {
+            if (functions_1.checkURL(img)) {
+                storageRef.child(functions_1.extractFireBaseFileName(img)).delete();
+            }
+        });
+        var info = this.db.list('/sights/' + this.sight.city + '/');
+        info.remove(this.sight.$key);
+        this.router.navigate(['/admin/sights']);
     };
     ViewSightComponent.prototype.cancel = function () {
         this.router.navigate(['/admin/sights']);
@@ -2462,8 +1954,8 @@ var ViewSightComponent = /** @class */ (function () {
     ViewSightComponent = __decorate([
         core_1.Component({
             selector: 'app-viewsight',
-            template: __webpack_require__("../../../../../src/app/viewsight/viewsight.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/viewsight/viewsight.component.scss")]
+            template: __webpack_require__("../../../../../src/app/view/sight/sight.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/view/sight/sight.component.scss")]
         }),
         __metadata("design:paramtypes", [typeof (_b = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _b || Object, typeof (_c = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _c || Object, typeof (_d = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _d || Object, typeof (_e = typeof core_1.NgZone !== "undefined" && core_1.NgZone) === "function" && _e || Object])
     ], ViewSightComponent);
@@ -2471,7 +1963,7 @@ var ViewSightComponent = /** @class */ (function () {
     var _a, _b, _c, _d, _e;
 }());
 exports.ViewSightComponent = ViewSightComponent;
-//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/viewsight/viewsight.component.js.map
+//# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/view/sight/sight.component.js.map
 
 /***/ }),
 

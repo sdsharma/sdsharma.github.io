@@ -89,7 +89,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".pac-container {\n\tz-index: 9999;\n}\n\n.main-container {\n\tmin-height: 100vh !important;\n\theight: 100% !important;\n}", ""]);
+exports.push([module.i, ".pac-container {\n\tz-index: 9999;\n}\n\n.main-container {\n\tmin-height: 100vh !important;\n\theight: 100% !important;\n}\n\n.row-align {\n\tmargin-left: .5rem;\n    margin-right: .5rem;\n    margin-bottom: .5rem;\n}\n\nagm-map {\n  \theight: 300px;\n}\n\n.img-restrict {\n\tmax-height: 128px;\n\tmax-width: 128px;\n}\n\n.unpad {\n\tpadding: 0;\n}", ""]);
 
 // exports
 

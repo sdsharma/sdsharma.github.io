@@ -3,7 +3,7 @@ webpackJsonp(["admin.module"],{
 /***/ "../../../../../src/app/admin/admin.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <header class=\"header header-5\">\n    <div class=\"branding\">\n      <span class=\"title\">MyLive</span>\n    </div>\n    <div class=\"header-actions\">\n        <a (click)=\"logout()\" class=\"nav-link nav-text logout\">\n            Logout\n        </a>\n    </div>\n  </header>\n  <clr-stack-view>\n      <clr-stack-block>\n          <clr-stack-label>{{service}} - <span *ngIf=\"service == 'CityLive'\">{{city}}</span><span *ngIf=\"service == 'CampusLive'\">{{school}}</span></clr-stack-label>\n          <clr-stack-block>\n              <clr-stack-label>\n                <div class=\"btn-group\">\n                    <div class=\"radio btn\">\n                        <input type=\"radio\" name=\"service\" id=\"citylive\" (click)=\"changeService('CityLive')\" [checked]=\"service == 'CityLive'\">\n                        <label for=\"citylive\">CityLive</label>\n                    </div>\n                    <div class=\"radio btn\">\n                        <input type=\"radio\" name=\"service\" id=\"campuslive\" (click)=\"changeService('CampusLive')\" [checked]=\"service == 'CampusLive'\">\n                        <label for=\"campuslive\">CampusLive</label>\n                    </div>\n                </div>\n              </clr-stack-label>\n              <clr-stack-content>\n                <div class=\"btn-group\" *ngIf=\"service == 'CityLive'\">\n                    <div class=\"radio btn\">\n                        <input type=\"radio\" name=\"city\" id=\"sd\" (click)=\"changeCity('San Diego')\" [checked]=\"city == 'San Diego'\">\n                        <label for=\"sd\">San Diego</label>\n                    </div>\n                    <div class=\"radio btn\">\n                        <input type=\"radio\" name=\"city\" id=\"sb\" (click)=\"changeCity('Santa Barbara')\" [checked]=\"city == 'Santa Barbara'\">\n                        <label for=\"sb\">Santa Barbara</label>\n                    </div>\n                    <!-- <div class=\"radio btn\">\n                        <input type=\"radio\" name=\"city\" id=\"davis\" (click)=\"changeCity('Davis')\" [checked]=\"city == 'Davis'\">\n                        <label for=\"davis\">Davis</label>\n                    </div> -->\n                </div>\n                <div class=\"btn-group\" *ngIf=\"service == 'CampusLive'\">\n                    <div class=\"radio btn\">\n                        <input type=\"radio\" name=\"city\" id=\"sd\" (click)=\"changeSchool('UC San Diego')\" [checked]=\"school == 'UC San Diego'\">\n                        <label for=\"sd\">UC San Diego</label>\n                    </div>\n                    <div class=\"radio btn\">\n                        <input type=\"radio\" name=\"city\" id=\"sb\" (click)=\"changeSchool('UC Santa Barbara')\" [checked]=\"school == 'UC Santa Barbara'\">\n                        <label for=\"sb\">UC Santa Barbara</label>\n                    </div>\n                    <div class=\"radio btn\">\n                        <input type=\"radio\" name=\"city\" id=\"davis\" (click)=\"changeSchool('UC Davis')\" [checked]=\"school == 'UC Davis'\">\n                        <label for=\"davis\">UC Davis</label>\n                    </div>\n                </div>\n              </clr-stack-content>\n          </clr-stack-block>\n      </clr-stack-block>\n  </clr-stack-view>\n  <nav class=\"subnav\">\n      <ul class=\"nav\" *ngIf=\"service == 'CityLive'\">\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLink=\"./experiences\" routerLinkActive=\"active\">Experiences</a>\n          </li>\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLink=\"./entertainment\" routerLinkActive=\"active\">Entertainment</a>\n          </li>\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLink=\"./grub\" routerLinkActive=\"active\">Grub</a>\n          </li>\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLink=\"./21\" routerLinkActive=\"active\">21+</a>\n          </li>\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLink=\"./sights\" routerLinkActive=\"active\">Sights</a>\n          </li>\n      </ul>\n      <ul class=\"nav\" *ngIf=\"service == 'CampusLive'\">\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLink=\"./campus\" routerLinkActive=\"active\">Campus Affiliated</a>\n          </li>\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLink=\"./organizations\" routerLinkActive=\"active\">Organizations</a>\n          </li>\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLink=\"./businesses\" routerLinkActive=\"active\">Businesses</a>\n          </li>\n      </ul>\n  </nav>\n  <router-outlet></router-outlet>"
+module.exports = "<app-header></app-header>\n<clr-stack-view>\n  <clr-stack-block>\n    <clr-stack-label>{{service}} - <span *ngIf=\"service == 'CityLive'\">{{city}}</span><span *ngIf=\"service == 'CampusLive'\">{{school}}</span></clr-stack-label>\n    <clr-stack-block>\n      <clr-stack-label>\n        <div class=\"btn-group\">\n          <div class=\"radio btn\">\n            <input type=\"radio\" name=\"service\" id=\"citylive\" (click)=\"changeService('CityLive')\" [checked]=\"service == 'CityLive'\">\n            <label for=\"citylive\">CityLive</label>\n          </div>\n          <div class=\"radio btn\">\n            <input type=\"radio\" name=\"service\" id=\"campuslive\" (click)=\"changeService('CampusLive')\" [checked]=\"service == 'CampusLive'\">\n            <label for=\"campuslive\">CampusLive</label>\n          </div>\n        </div>\n      </clr-stack-label>\n      <clr-stack-content>\n        <div class=\"btn-group\" *ngIf=\"service == 'CityLive'\">\n          <div class=\"radio btn\">\n            <input type=\"radio\" name=\"city\" id=\"sd\" (click)=\"changeCity('San Diego')\" [checked]=\"city == 'San Diego'\">\n            <label for=\"sd\">San Diego</label>\n          </div>\n          <div class=\"radio btn\">\n            <input type=\"radio\" name=\"city\" id=\"sb\" (click)=\"changeCity('Santa Barbara')\" [checked]=\"city == 'Santa Barbara'\">\n            <label for=\"sb\">Santa Barbara</label>\n          </div>\n          <!-- <div class=\"radio btn\">\n              <input type=\"radio\" name=\"city\" id=\"davis\" (click)=\"changeCity('Davis')\" [checked]=\"city == 'Davis'\">\n              <label for=\"davis\">Davis</label>\n            </div> -->\n          </div>\n          <div class=\"btn-group\" *ngIf=\"service == 'CampusLive'\">\n            <div class=\"radio btn\">\n              <input type=\"radio\" name=\"city\" id=\"sd\" (click)=\"changeSchool('UC San Diego')\" [checked]=\"school == 'UC San Diego'\">\n              <label for=\"sd\">UC San Diego</label>\n            </div>\n            <div class=\"radio btn\">\n              <input type=\"radio\" name=\"city\" id=\"sb\" (click)=\"changeSchool('UC Santa Barbara')\" [checked]=\"school == 'UC Santa Barbara'\">\n              <label for=\"sb\">UC Santa Barbara</label>\n            </div>\n          <!-- <div class=\"radio btn\">\n              <input type=\"radio\" name=\"city\" id=\"davis\" (click)=\"changeSchool('UC Davis')\" [checked]=\"school == 'UC Davis'\">\n              <label for=\"davis\">UC Davis</label>\n            </div> -->\n          </div>\n        </clr-stack-content>\n      </clr-stack-block>\n    </clr-stack-block>\n  </clr-stack-view>\n  <nav class=\"subnav\">\n    <ul class=\"nav\" *ngIf=\"service == 'CityLive'\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"./experiences\" routerLinkActive=\"active\" (click)=\"changeCategory('experiences')\">Experiences</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"./entertainment\" routerLinkActive=\"active\" (click)=\"changeCategory('entertainment')\">Entertainment</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"./grub\" routerLinkActive=\"active\" (click)=\"changeCategory('grub')\">Grub</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"./21\" routerLinkActive=\"active\" (click)=\"changeCategory('21')\">21+</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"./sights\" routerLinkActive=\"active\" (click)=\"changeCategory('sights')\">Sights</a>\n      </li>\n    </ul>\n    <ul class=\"nav\" *ngIf=\"service == 'CampusLive'\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"./campus\" routerLinkActive=\"active\" (click)=\"changeCategory('campus')\">Campus Affiliated</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"./organizations\" routerLinkActive=\"active\" (click)=\"changeCategory('organizations')\">Organizations</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"./businesses\" routerLinkActive=\"active\" (click)=\"changeCategory('businesses')\">Businesses</a>\n      </li>\n    </ul>\n  </nav>\n  <router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -15,7 +15,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".logout {\n  cursor: pointer; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -44,6 +44,7 @@ var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
 var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
 var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
+var functions_1 = __webpack_require__("../../../../../src/app/shared/functions/functions.ts");
 var AdminComponent = /** @class */ (function () {
     function AdminComponent(store, router) {
         this.store = store;
@@ -57,42 +58,33 @@ var AdminComponent = /** @class */ (function () {
             _this.service = view.service;
             _this.school = view.school;
             _this.city = view.city;
+            _this.subroute = view.subroute;
         });
         this.store.dispatch({ type: appActions_1.AppActions.GET_CITY_ENTITIES, payload: this.city });
     };
     AdminComponent.prototype.changeService = function (service) {
         if (service == 'CampusLive') {
             this.router.navigate(['admin/campus']);
-            this.store.dispatch({ type: appActions_1.AppActions.GET_CAMPUS_ENTITIES, payload: { city: this.getCity(this.school), school: this.school } });
+            this.store.dispatch({ type: appActions_1.AppActions.CHANGE_SCHOOL, payload: functions_1.getSchool(this.city) });
+            this.store.dispatch({ type: appActions_1.AppActions.GET_CAMPUS_ENTITIES, payload: { city: functions_1.getCity(this.school), school: this.school } });
         }
         else {
             this.router.navigate(['admin/experiences']);
+            this.store.dispatch({ type: appActions_1.AppActions.CHANGE_CITY, payload: functions_1.getCity(this.school) });
             this.store.dispatch({ type: appActions_1.AppActions.GET_CITY_ENTITIES, payload: this.city });
         }
         this.store.dispatch({ type: appActions_1.AppActions.CHANGE_SERVICE, payload: service });
     };
     AdminComponent.prototype.changeSchool = function (school) {
         this.store.dispatch({ type: appActions_1.AppActions.CHANGE_SCHOOL, payload: school });
-        this.store.dispatch({ type: appActions_1.AppActions.GET_CAMPUS_ENTITIES, payload: { city: this.getCity(school), school: school } });
+        this.store.dispatch({ type: appActions_1.AppActions.GET_CAMPUS_ENTITIES, payload: { city: functions_1.getCity(school), school: school } });
     };
     AdminComponent.prototype.changeCity = function (city) {
         this.store.dispatch({ type: appActions_1.AppActions.CHANGE_CITY, payload: city });
         this.store.dispatch({ type: appActions_1.AppActions.GET_CITY_ENTITIES, payload: city });
     };
-    AdminComponent.prototype.logout = function () {
-        this.store.dispatch({ type: appActions_1.AppActions.LOGOUT, payload: null });
-        this.router.navigate(['login']);
-    };
-    AdminComponent.prototype.getCity = function (school) {
-        if (school == 'UC San Diego') {
-            return 'San Diego';
-        }
-        else if (school == 'UC Santa Barbara') {
-            return 'Santa Barbara';
-        }
-        else if (school == 'UC Davis') {
-            return 'Davis';
-        }
+    AdminComponent.prototype.changeCategory = function (category) {
+        this.store.dispatch({ type: appActions_1.AppActions.SET_SUB_ROUTE, payload: category });
     };
     AdminComponent = __decorate([
         core_1.Component({
@@ -222,7 +214,7 @@ exports.AdminRoutes = [
 /***/ "../../../../../src/app/admin/businesses/businesses.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/organization\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let business of businesses\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"qualify(business)\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{business.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{business.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(business)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
+module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/new/organization\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let business of businesses\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"business | qualifycategory: category : query\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{business.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{business.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(business)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
 
 /***/ }),
 
@@ -234,7 +226,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -260,13 +252,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
-var database_1 = __webpack_require__("../../../../angularfire2/database.js");
 var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
 var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
 var BusinessesComponent = /** @class */ (function () {
-    function BusinessesComponent(db, store, router) {
-        this.db = db;
+    function BusinessesComponent(store, router) {
         this.store = store;
         this.router = router;
         this.category = 'Business';
@@ -284,26 +274,10 @@ var BusinessesComponent = /** @class */ (function () {
     BusinessesComponent.prototype.searchUpdate = function (value) {
         this.query = value.toLowerCase();
     };
-    BusinessesComponent.prototype.qualify = function (entity) {
-        if (entity.category == this.category) {
-            if ((entity.name.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else if ((entity.type.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return false;
-        }
-    };
     BusinessesComponent.prototype.edit = function (org) {
         org.school = this.school;
         this.store.dispatch({ type: appActions_1.AppActions.SET_VIEW_ORGANIZATION, payload: org });
-        this.router.navigate(['/vieworganization']);
+        this.router.navigate(['/view/organization']);
     };
     BusinessesComponent = __decorate([
         core_1.Component({
@@ -311,10 +285,10 @@ var BusinessesComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/admin/businesses/businesses.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/businesses/businesses.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _a || Object, typeof (_b = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
     ], BusinessesComponent);
     return BusinessesComponent;
-    var _a, _b, _c;
+    var _a, _b;
 }());
 exports.BusinessesComponent = BusinessesComponent;
 //# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/admin/businesses/businesses.component.js.map
@@ -324,7 +298,7 @@ exports.BusinessesComponent = BusinessesComponent;
 /***/ "../../../../../src/app/admin/campus/campus.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/organization\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let campus of campuses\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"qualify(campus)\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{campus.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{campus.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(campus)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
+module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/new/organization\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let campus of campuses\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"campus | qualifycategory: category : query\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{campus.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{campus.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(campus)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
 
 /***/ }),
 
@@ -336,7 +310,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -362,13 +336,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
-var database_1 = __webpack_require__("../../../../angularfire2/database.js");
 var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
 var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
 var CampusComponent = /** @class */ (function () {
-    function CampusComponent(db, store, router) {
-        this.db = db;
+    function CampusComponent(store, router) {
         this.store = store;
         this.router = router;
         this.category = 'Campus Affiliated';
@@ -386,26 +358,10 @@ var CampusComponent = /** @class */ (function () {
     CampusComponent.prototype.searchUpdate = function (value) {
         this.query = value.toLowerCase();
     };
-    CampusComponent.prototype.qualify = function (entity) {
-        if (entity.category == this.category) {
-            if ((entity.name.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else if ((entity.type.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return false;
-        }
-    };
     CampusComponent.prototype.edit = function (org) {
         org.school = this.school;
         this.store.dispatch({ type: appActions_1.AppActions.SET_VIEW_ORGANIZATION, payload: org });
-        this.router.navigate(['/vieworganization']);
+        this.router.navigate(['/view/organization']);
     };
     CampusComponent = __decorate([
         core_1.Component({
@@ -413,10 +369,10 @@ var CampusComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/admin/campus/campus.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/campus/campus.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _a || Object, typeof (_b = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
     ], CampusComponent);
     return CampusComponent;
-    var _a, _b, _c;
+    var _a, _b;
 }());
 exports.CampusComponent = CampusComponent;
 //# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/admin/campus/campus.component.js.map
@@ -426,7 +382,7 @@ exports.CampusComponent = CampusComponent;
 /***/ "../../../../../src/app/admin/entertainment/entertainment.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/business\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let entertainment of entertainments\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"qualify(entertainment)\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{entertainment.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{entertainment.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(entertainment)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
+module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/new/business\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let entertainment of entertainments\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"entertainment | qualifycategory: category : query\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{entertainment.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{entertainment.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(entertainment)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
 
 /***/ }),
 
@@ -438,7 +394,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -464,13 +420,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
-var database_1 = __webpack_require__("../../../../angularfire2/database.js");
 var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
 var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
 var EntertainmentComponent = /** @class */ (function () {
-    function EntertainmentComponent(db, store, router) {
-        this.db = db;
+    function EntertainmentComponent(store, router) {
         this.store = store;
         this.router = router;
         this.category = 'Entertainment';
@@ -488,26 +442,10 @@ var EntertainmentComponent = /** @class */ (function () {
     EntertainmentComponent.prototype.searchUpdate = function (value) {
         this.query = value.toLowerCase();
     };
-    EntertainmentComponent.prototype.qualify = function (entity) {
-        if (entity.category == this.category) {
-            if ((entity.name.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else if ((entity.type.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return false;
-        }
-    };
     EntertainmentComponent.prototype.edit = function (business) {
         business.city = this.city;
         this.store.dispatch({ type: appActions_1.AppActions.SET_VIEW_BUSINESS, payload: business });
-        this.router.navigate(['/viewbusiness']);
+        this.router.navigate(['/view/business']);
     };
     EntertainmentComponent = __decorate([
         core_1.Component({
@@ -515,10 +453,10 @@ var EntertainmentComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/admin/entertainment/entertainment.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/entertainment/entertainment.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _a || Object, typeof (_b = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
     ], EntertainmentComponent);
     return EntertainmentComponent;
-    var _a, _b, _c;
+    var _a, _b;
 }());
 exports.EntertainmentComponent = EntertainmentComponent;
 //# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/admin/entertainment/entertainment.component.js.map
@@ -528,7 +466,7 @@ exports.EntertainmentComponent = EntertainmentComponent;
 /***/ "../../../../../src/app/admin/experience/experience.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/business\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let experience of experiences\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"qualify(experience)\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{experience.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{experience.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(experience)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
+module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/new/business\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let experience of experiences\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"experience | qualifycategory: category : query\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{experience.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{experience.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(experience)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
 
 /***/ }),
 
@@ -540,7 +478,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -566,13 +504,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
-var database_1 = __webpack_require__("../../../../angularfire2/database.js");
 var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
 var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
 var ExperienceComponent = /** @class */ (function () {
-    function ExperienceComponent(db, store, router) {
-        this.db = db;
+    function ExperienceComponent(store, router) {
         this.store = store;
         this.router = router;
         this.category = 'Experiences';
@@ -590,26 +526,10 @@ var ExperienceComponent = /** @class */ (function () {
     ExperienceComponent.prototype.searchUpdate = function (value) {
         this.query = value.toLowerCase();
     };
-    ExperienceComponent.prototype.qualify = function (entity) {
-        if (entity.category == this.category) {
-            if ((entity.name.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else if ((entity.type.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return false;
-        }
-    };
     ExperienceComponent.prototype.edit = function (business) {
         business.city = this.city;
         this.store.dispatch({ type: appActions_1.AppActions.SET_VIEW_BUSINESS, payload: business });
-        this.router.navigate(['/viewbusiness']);
+        this.router.navigate(['/view/business']);
     };
     ExperienceComponent = __decorate([
         core_1.Component({
@@ -617,10 +537,10 @@ var ExperienceComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/admin/experience/experience.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/experience/experience.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _a || Object, typeof (_b = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
     ], ExperienceComponent);
     return ExperienceComponent;
-    var _a, _b, _c;
+    var _a, _b;
 }());
 exports.ExperienceComponent = ExperienceComponent;
 //# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/admin/experience/experience.component.js.map
@@ -630,7 +550,7 @@ exports.ExperienceComponent = ExperienceComponent;
 /***/ "../../../../../src/app/admin/grub/grub.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/business\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let grub of grubs\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"qualify(grub)\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{grub.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{grub.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(grub)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
+module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/new/business\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let grub of grubs\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"grub | qualifycategory: category : query\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{grub.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{grub.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(grub)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
 
 /***/ }),
 
@@ -642,7 +562,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -668,13 +588,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
-var database_1 = __webpack_require__("../../../../angularfire2/database.js");
 var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
 var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
 var GrubComponent = /** @class */ (function () {
-    function GrubComponent(db, store, router) {
-        this.db = db;
+    function GrubComponent(store, router) {
         this.store = store;
         this.router = router;
         this.category = 'Grub';
@@ -692,26 +610,10 @@ var GrubComponent = /** @class */ (function () {
     GrubComponent.prototype.searchUpdate = function (value) {
         this.query = value.toLowerCase();
     };
-    GrubComponent.prototype.qualify = function (entity) {
-        if (entity.category == this.category) {
-            if ((entity.name.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else if ((entity.type.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return false;
-        }
-    };
     GrubComponent.prototype.edit = function (business) {
         business.city = this.city;
         this.store.dispatch({ type: appActions_1.AppActions.SET_VIEW_BUSINESS, payload: business });
-        this.router.navigate(['/viewbusiness']);
+        this.router.navigate(['/view/business']);
     };
     GrubComponent = __decorate([
         core_1.Component({
@@ -719,10 +621,10 @@ var GrubComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/admin/grub/grub.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/grub/grub.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _a || Object, typeof (_b = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
     ], GrubComponent);
     return GrubComponent;
-    var _a, _b, _c;
+    var _a, _b;
 }());
 exports.GrubComponent = GrubComponent;
 //# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/admin/grub/grub.component.js.map
@@ -732,7 +634,7 @@ exports.GrubComponent = GrubComponent;
 /***/ "../../../../../src/app/admin/organizations/organizations.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/organization\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let organization of organizations\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"qualify(organization)\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{organization.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{organization.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(organization)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
+module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/new/organization\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let organization of organizations\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"organization | qualifycategory: category : query\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{organization.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{organization.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(organization)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
 
 /***/ }),
 
@@ -744,7 +646,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -770,13 +672,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
-var database_1 = __webpack_require__("../../../../angularfire2/database.js");
 var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
 var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
 var OrganizationsComponent = /** @class */ (function () {
-    function OrganizationsComponent(db, store, router) {
-        this.db = db;
+    function OrganizationsComponent(store, router) {
         this.store = store;
         this.router = router;
         this.category = 'Campus Organization';
@@ -794,26 +694,10 @@ var OrganizationsComponent = /** @class */ (function () {
     OrganizationsComponent.prototype.searchUpdate = function (value) {
         this.query = value.toLowerCase();
     };
-    OrganizationsComponent.prototype.qualify = function (entity) {
-        if (entity.category == this.category) {
-            if ((entity.name.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else if ((entity.type.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return false;
-        }
-    };
     OrganizationsComponent.prototype.edit = function (org) {
         org.school = this.school;
         this.store.dispatch({ type: appActions_1.AppActions.SET_VIEW_ORGANIZATION, payload: org });
-        this.router.navigate(['/vieworganization']);
+        this.router.navigate(['/view/organization']);
     };
     OrganizationsComponent = __decorate([
         core_1.Component({
@@ -821,10 +705,10 @@ var OrganizationsComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/admin/organizations/organizations.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/organizations/organizations.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _a || Object, typeof (_b = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
     ], OrganizationsComponent);
     return OrganizationsComponent;
-    var _a, _b, _c;
+    var _a, _b;
 }());
 exports.OrganizationsComponent = OrganizationsComponent;
 //# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/admin/organizations/organizations.component.js.map
@@ -834,7 +718,7 @@ exports.OrganizationsComponent = OrganizationsComponent;
 /***/ "../../../../../src/app/admin/sights/sights.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/sight\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let sight of sights\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"qualify(sight)\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{sight.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{sight.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(sight)\">Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
+module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/new/sight\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let sight of sights\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"sight | qualifytype: query\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{sight.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{sight.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(sight)\">Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
 
 /***/ }),
 
@@ -872,13 +756,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
-var database_1 = __webpack_require__("../../../../angularfire2/database.js");
 var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
 var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
 var SightsComponent = /** @class */ (function () {
-    function SightsComponent(db, store, router) {
-        this.db = db;
+    function SightsComponent(store, router) {
         this.store = store;
         this.router = router;
         this.query = '';
@@ -898,21 +780,10 @@ var SightsComponent = /** @class */ (function () {
     SightsComponent.prototype.searchUpdate = function (value) {
         this.query = value.toLowerCase();
     };
-    SightsComponent.prototype.qualify = function (entity) {
-        if ((entity.name.toLowerCase()).indexOf(this.query) != -1) {
-            return true;
-        }
-        else if ((entity.type.toLowerCase()).indexOf(this.query) != -1) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    };
     SightsComponent.prototype.edit = function (sight) {
         sight.city = this.city;
         this.store.dispatch({ type: appActions_1.AppActions.SET_VIEW_SIGHT, payload: sight });
-        this.router.navigate(['/viewsight']);
+        this.router.navigate(['/view/sight']);
     };
     SightsComponent = __decorate([
         core_1.Component({
@@ -920,10 +791,10 @@ var SightsComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/admin/sights/sights.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/sights/sights.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _a || Object, typeof (_b = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
     ], SightsComponent);
     return SightsComponent;
-    var _a, _b, _c;
+    var _a, _b;
 }());
 exports.SightsComponent = SightsComponent;
 //# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/admin/sights/sights.component.js.map
@@ -933,7 +804,7 @@ exports.SightsComponent = SightsComponent;
 /***/ "../../../../../src/app/admin/twentyone/twentyone.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/business\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let twentyone of twentyones\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"qualify(twentyone)\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{twentyone.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{twentyone.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(twentyone)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
+module.exports = "<app-searchbox (change)=\"searchUpdate($event)\"></app-searchbox>\n<button type=\"button\" class=\"btn btn-icon btn-primary\" routerLink=\"/new/business\">\n    <clr-icon shape=\"plus\"></clr-icon>\n</button>\n<div class=\"row row-align\">\n\t<ng-container *ngFor=\"let twentyone of twentyones\">\n\t\t<div class=\"col-lg-6 col-md-12 col-sm-12 col-xs-12\" *ngIf=\"twentyone | qualifycategory: category : query\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">\n\t\t\t\t\t{{twentyone.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-block\">\n\t\t\t\t\t<div class=\"card-text\">\n\t\t\t\t\t\t{{twentyone.type}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"card-footer\">\n\t\t\t\t\t<button class=\"btn btn-sm btn-link\" (click)=\"edit(twentyone)\">View/Edit</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</ng-container>\n</div>"
 
 /***/ }),
 
@@ -945,7 +816,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row-align {\n  margin-left: .5rem;\n  margin-right: .5rem;\n  margin-bottom: .5rem; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -971,13 +842,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
-var database_1 = __webpack_require__("../../../../angularfire2/database.js");
 var store_1 = __webpack_require__("../../../../@ngrx/store/index.js");
 var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
 var TwentyOneComponent = /** @class */ (function () {
-    function TwentyOneComponent(db, store, router) {
-        this.db = db;
+    function TwentyOneComponent(store, router) {
         this.store = store;
         this.router = router;
         this.category = '21+';
@@ -995,26 +864,10 @@ var TwentyOneComponent = /** @class */ (function () {
     TwentyOneComponent.prototype.searchUpdate = function (value) {
         this.query = value.toLowerCase();
     };
-    TwentyOneComponent.prototype.qualify = function (entity) {
-        if (entity.category == this.category) {
-            if ((entity.name.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else if ((entity.type.toLowerCase()).indexOf(this.query) != -1) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return false;
-        }
-    };
     TwentyOneComponent.prototype.edit = function (business) {
         business.city = this.city;
         this.store.dispatch({ type: appActions_1.AppActions.SET_VIEW_BUSINESS, payload: business });
-        this.router.navigate(['/viewbusiness']);
+        this.router.navigate(['/view/business']);
     };
     TwentyOneComponent = __decorate([
         core_1.Component({
@@ -1022,10 +875,10 @@ var TwentyOneComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/admin/twentyone/twentyone.component.html"),
             styles: [__webpack_require__("../../../../../src/app/admin/twentyone/twentyone.component.scss")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof database_1.AngularFireDatabase !== "undefined" && database_1.AngularFireDatabase) === "function" && _a || Object, typeof (_b = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof store_1.Store !== "undefined" && store_1.Store) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
     ], TwentyOneComponent);
     return TwentyOneComponent;
-    var _a, _b, _c;
+    var _a, _b;
 }());
 exports.TwentyOneComponent = TwentyOneComponent;
 //# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/app/admin/twentyone/twentyone.component.js.map
