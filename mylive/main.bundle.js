@@ -1594,7 +1594,7 @@ exports.ViewOrganizationComponent = ViewOrganizationComponent;
 /***/ "../../../../../src/app/view/post/post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<form [formGroup]=\"model\" class=\"unpad\">\n\t<div class=\"row row-align\">\n\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t<section class=\"form-block\">\n\t\t\t\t<label>Edit Post for {{this.post.location}}</label>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Post Title</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Name\" size=\"45\" formControlName=\"name\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\" *ngIf=\"model.value.type == 'Experience'\">\n\t\t\t\t\t<label class=\"required\">Experience Image</label>\n\t\t\t\t\t<img [src]=\"logo\" *ngIf=\"logo\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'logo')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\" *ngIf=\"viewState.service == 'CampusLive'\">\n\t\t\t\t\t<label class=\"required\">Location</label>\n\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"openMap = true; agmMap.triggerResize()\">Set Location</button>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Post Type</label>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Event\" formControlName=\"type\" value=\"Event\">\n\t\t\t\t\t\t<label for=\"Event\">Event</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Deal\" formControlName=\"type\" value=\"Deal\">\n\t\t\t\t\t\t<label for=\"Deal\">Deal</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Experience\" formControlName=\"type\" value=\"Experience\">\n\t\t\t\t\t\t<label for=\"Experience\">Experience</label>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Start Date/Time</label>\n\t\t\t\t\t<input type=\"datetime-local\" formControlName=\"start_date\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">End Date/Time</label>\n\t\t\t\t\t<input type=\"datetime-local\" formControlName=\"end_date\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\" maxlength=\"250\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Deal/Purchase Page URL</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"http://example.com\" size=\"45\" formControlName=\"website\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t            <label>Featured</label>\n\t\t            <div class=\"radio-inline\">\n\t\t                <input type=\"checkbox\" name=\"isFeatured\" id=\"isFeatured\" formControlName=\"isFeatured\">\n\t\t            </div>\n\t\t        </div>\n\t\t\t</section>\n\t\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Save</button>\n\t\t\t<button type=\"submit\" class=\"btn btn-danger\" (click)=\"delete()\">Delete</button>\n\t\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n\t\t</div>\n\t</div>\n\n\t<clr-modal [(clrModalOpen)]=\"openMap\">\n\t\t<h3 class=\"modal-title\">Business Address</h3>\n\t\t<div class=\"modal-body\">\n\t\t\t<input placeholder=\"Search for Location\" type=\"text\" (setAddress)=\"setAddress($event)\" googleplace size=\"45\" class=\"pad-bottom\">\n\t\t\t<agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"zoom\" #agmMap>\n\t\t\t\t<agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [markerDraggable]=\"true\" (dragEnd)=\"markerDragEnd(m, $event)\"></agm-marker>\n\t\t\t</agm-map>\n\t\t</div>\n\t\t<div class=\"modal-footer\">\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"openMap = false\">Save</button>\n\t\t</div>\n\t</clr-modal>"
+module.exports = "<app-header></app-header>\n<form [formGroup]=\"model\" class=\"unpad\">\n\t<div class=\"row row-align\">\n\t\t<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n\t\t\t<section class=\"form-block\">\n\t\t\t\t<label>Edit Post for {{this.post.location}}</label>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Post Title</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"Name\" size=\"45\" formControlName=\"name\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\" *ngIf=\"model.value.type == 'Experience'\">\n\t\t\t\t\t<label class=\"required\">Experience Image</label>\n\t\t\t\t\t<img [src]=\"logo\" *ngIf=\"logo\" class=\"img-restrict\"><br>\n\t\t\t\t\t<input type=\"file\" imageUpload [resizeOptions]=\"options\" (imageSelected)=\"selected($event, 'logo')\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\" *ngIf=\"viewState.service == 'CampusLive'\">\n\t\t\t\t\t<label class=\"required\">Location</label>\n\t\t\t\t\t<button class=\"btn btn-primary btn-sm\" (click)=\"openMap = true; agmMap.triggerResize()\">Set Location</button>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Post Type</label>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Event\" formControlName=\"type\" value=\"Event\">\n\t\t\t\t\t\t<label for=\"Event\">Event</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Deal\" formControlName=\"type\" value=\"Deal\">\n\t\t\t\t\t\t<label for=\"Deal\">Deal</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"radio-inline\">\n\t\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Experience\" formControlName=\"type\" value=\"Experience\">\n\t\t\t\t\t\t<label for=\"Experience\">Experience</label>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">Start Date/Time</label>\n\t\t\t\t\t<input type=\"datetime-local\" formControlName=\"start_date\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label class=\"required\">End Date/Time</label>\n\t\t\t\t\t<input type=\"datetime-local\" formControlName=\"end_date\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Description</label>\n\t\t\t\t\t<textarea rows=\"3\" formControlName=\"description\" maxlength=\"250\"></textarea>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Deal/Purchase Page URL</label>\n\t\t\t\t\t<input type=\"text\" placeholder=\"http://example.com\" size=\"45\" formControlName=\"website\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t            <label>Featured</label>\n\t\t            <div class=\"radio-inline\">\n\t\t                <input type=\"checkbox\" name=\"isFeatured\" id=\"isFeatured\" formControlName=\"isFeatured\">\n\t\t            </div>\n\t\t        </div>\n\t\t        <div class=\"form-group\">\n\t\t            <label>Recurring</label>\n\t\t            <div class=\"radio-inline\">\n\t\t                <input type=\"checkbox\" name=\"isRecurring\" id=\"isRecurring\" formControlName=\"isRecurring\">\n\t\t            </div>\n\t\t        </div>\n\t\t        <div class=\"form-group\" *ngIf=\"model.value.isRecurring == true\">\n\t\t            <label>Every Monday</label>\n\t\t            <div class=\"radio-inline\">\n\t\t                <input type=\"checkbox\" (change)=\"modifyRecurringDay('Monday')\" [checked]=\"containsDay('Monday')\">\n\t\t            </div>\n\t\t        </div>\n\t\t        <div class=\"form-group\" *ngIf=\"model.value.isRecurring == true\">\n\t\t            <label>Every Tuesday</label>\n\t\t            <div class=\"radio-inline\">\n\t\t                <input type=\"checkbox\" (change)=\"modifyRecurringDay('Tuesday')\" [checked]=\"containsDay('Tuesday')\">\n\t\t            </div>\n\t\t        </div>\n\t\t        <div class=\"form-group\" *ngIf=\"model.value.isRecurring == true\">\n\t\t            <label>Every Wednesday</label>\n\t\t            <div class=\"radio-inline\">\n\t\t                <input type=\"checkbox\" (change)=\"modifyRecurringDay('Wednesday')\" [checked]=\"containsDay('Wednesday')\">\n\t\t            </div>\n\t\t        </div>\n\t\t        <div class=\"form-group\" *ngIf=\"model.value.isRecurring == true\">\n\t\t            <label>Every Thursday</label>\n\t\t            <div class=\"radio-inline\">\n\t\t                <input type=\"checkbox\" (change)=\"modifyRecurringDay('Thursday')\" [checked]=\"containsDay('Thursday')\">\n\t\t            </div>\n\t\t        </div>\n\t\t        <div class=\"form-group\" *ngIf=\"model.value.isRecurring == true\">\n\t\t            <label>Every Friday</label>\n\t\t            <div class=\"radio-inline\">\n\t\t                <input type=\"checkbox\" (change)=\"modifyRecurringDay('Friday')\" [checked]=\"containsDay('Friday')\">\n\t\t            </div>\n\t\t        </div>\n\t\t        <div class=\"form-group\" *ngIf=\"model.value.isRecurring == true\">\n\t\t            <label>Every Saturday</label>\n\t\t            <div class=\"radio-inline\">\n\t\t                <input type=\"checkbox\" (change)=\"modifyRecurringDay('Saturday')\" [checked]=\"containsDay('Saturday')\">\n\t\t            </div>\n\t\t        </div>\n\t\t        <div class=\"form-group\" *ngIf=\"model.value.isRecurring == true\">\n\t\t            <label>Every Sunday</label>\n\t\t            <div class=\"radio-inline\">\n\t\t                <input type=\"checkbox\" (change)=\"modifyRecurringDay('Sunday')\" [checked]=\"containsDay('Sunday')\">\n\t\t            </div>\n\t\t        </div>\n\t\t\t</section>\n\t\t\t<button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit()\">Save</button>\n\t\t\t<button type=\"submit\" class=\"btn btn-danger\" (click)=\"delete()\">Delete</button>\n\t\t\t<button type=\"submit\" class=\"btn btn-secondary\" (click)=\"cancel()\">Cancel</button>\n\t\t</div>\n\t</div>\n\n\t<clr-modal [(clrModalOpen)]=\"openMap\">\n\t\t<h3 class=\"modal-title\">Business Address</h3>\n\t\t<div class=\"modal-body\">\n\t\t\t<input placeholder=\"Search for Location\" type=\"text\" (setAddress)=\"setAddress($event)\" googleplace size=\"45\" class=\"pad-bottom\">\n\t\t\t<agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"zoom\" #agmMap>\n\t\t\t\t<agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [markerDraggable]=\"true\" (dragEnd)=\"markerDragEnd(m, $event)\"></agm-marker>\n\t\t\t</agm-map>\n\t\t</div>\n\t\t<div class=\"modal-footer\">\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"openMap = false\">Save</button>\n\t\t</div>\n\t</clr-modal>"
 
 /***/ }),
 
@@ -1652,7 +1652,8 @@ var ViewPostComponent = /** @class */ (function () {
             end_date: new forms_1.FormControl('', forms_1.Validators.required),
             website: new forms_1.FormControl(''),
             description: new forms_1.FormControl(''),
-            isFeatured: new forms_1.FormControl(false)
+            isFeatured: new forms_1.FormControl(false),
+            isRecurring: new forms_1.FormControl(false)
         });
         this.logo = null;
         this.options = {
@@ -1662,6 +1663,7 @@ var ViewPostComponent = /** @class */ (function () {
         this.latitude = 39.8282;
         this.longitude = -98.5795;
         this.zoom = 4;
+        this.recurringDays = [];
     }
     ViewPostComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1671,7 +1673,13 @@ var ViewPostComponent = /** @class */ (function () {
             _this.post = state.data.viewPost;
             _this.viewState = state.view;
             _this.model.patchValue(_this.post);
+            var new_start = (new Date(_this.post.start_date)).toISOString();
+            var new_end = (new Date(_this.post.end_date)).toISOString();
+            _this.model.patchValue({ start_date: new_start.substring(0, new_start.length - 1), end_date: new_end.substring(0, new_end.length - 1) });
             _this.logo = _this.post.logo_url;
+            if (_this.post.recurring_days) {
+                _this.recurringDays = _this.post.recurring_days;
+            }
             if (_this.viewState.service != 'CampusLive') {
                 _this.longitude = _this.post.longitude;
                 _this.latitude = _this.post.latitude;
@@ -1731,11 +1739,13 @@ var ViewPostComponent = /** @class */ (function () {
                 type: this.model.value.type,
                 website: this.model.value.website,
                 description: this.model.value.description,
-                start_date: this.model.value.start_date,
-                end_date: this.model.value.end_date,
+                start_date: (new Date(this.model.value.start_date)).toLocaleString([], { hour: '2-digit', minute: '2-digit', year: 'numeric', month: 'numeric', day: 'numeric' }).replace(/,/g, ''),
+                end_date: (new Date(this.model.value.end_date)).toLocaleString([], { hour: '2-digit', minute: '2-digit', year: 'numeric', month: 'numeric', day: 'numeric' }).replace(/,/g, ''),
                 location: this.post.location,
                 isFeatured: this.model.value.isFeatured,
-                entity_id: this.post.entity_id
+                isRecurring: this.model.value.isRecurring,
+                entity_id: this.post.entity_id,
+                recurring_days: this.model.value.isRecurring ? this.recurringDays : null
             };
             if (this.viewState.service == 'CampusLive') {
                 var info = this.db.list('/school_posts/' + functions_1.getCity(this.viewState.school) + '/' + this.viewState.school + '/');
@@ -1765,6 +1775,23 @@ var ViewPostComponent = /** @class */ (function () {
             var info = this.db.list('/city_posts/' + this.viewState.city + '/');
             info.remove(this.post.$key);
             this.router.navigate(['/view/business']);
+        }
+    };
+    ViewPostComponent.prototype.containsDay = function (day) {
+        if (this.recurringDays.indexOf(day) > -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    ViewPostComponent.prototype.modifyRecurringDay = function (day) {
+        var idx = this.recurringDays.indexOf(day);
+        if (idx == -1) {
+            this.recurringDays.push(day);
+        }
+        else {
+            this.recurringDays.splice(idx, 1);
         }
     };
     ViewPostComponent.prototype.cancel = function () {
