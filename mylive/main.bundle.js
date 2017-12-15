@@ -1,16 +1,16 @@
-webpackJsonp([2],{
+webpackJsonp(["main"],{
 
-/***/ "../../../../../src async recursive":
+/***/ "../../../../../src/$$_gendir lazy recursive":
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"./admin/admin.module": [
 		"../../../../../src/app/admin/admin.module.ts",
-		0
+		"admin.module"
 	],
 	"./new/new.module": [
 		"../../../../../src/app/new/new.module.ts",
-		1
+		"new.module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -24,8 +24,8 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
+webpackAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = "../../../../../src async recursive";
 
 /***/ }),
 
@@ -867,10 +867,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var effects_1 = __webpack_require__("../../../../@ngrx/effects/index.js");
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
 var rxjs_1 = __webpack_require__("../../../../rxjs/Rx.js");
-__webpack_require__("../../../../rxjs/add/operator/map.js");
-__webpack_require__("../../../../rxjs/add/operator/switchMap.js");
-__webpack_require__("../../../../rxjs/add/operator/catch.js");
-__webpack_require__("../../../../rxjs/add/observable/of.js");
+__webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+__webpack_require__("../../../../rxjs/_esm5/add/operator/switchMap.js");
+__webpack_require__("../../../../rxjs/_esm5/add/operator/catch.js");
+__webpack_require__("../../../../rxjs/_esm5/add/observable/of.js");
 var http_1 = __webpack_require__("../../../http/@angular/http.es5.js");
 var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var auth_1 = __webpack_require__("../../../../angularfire2/auth.js");
@@ -1999,21 +1999,17 @@ exports.ViewSightComponent = ViewSightComponent;
 
 "use strict";
 
-// The file contents for the current environment will overwrite these during build.
-// The build system defaults to the dev environment which uses `environment.ts`, but if you do
-// `ng build --env=prod` then `environment.prod.ts` will be used instead.
-// The list of which env maps to which file can be found in `angular-cli.json`.
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.environment = {
-    production: false,
-    name: "mylive-webtest",
+    production: true,
+    name: "mylive-dev",
     firebase: {
-        apiKey: "AIzaSyCRj7F32Y7CgdA02J-vKWH_lB4p8x29cIY",
-        authDomain: "mylive-webtest.firebaseapp.com",
-        databaseURL: "https://mylive-webtest.firebaseio.com",
-        projectId: "mylive-webtest",
-        storageBucket: "mylive-webtest.appspot.com",
-        messagingSenderId: "422178994969"
+        apiKey: "AIzaSyA1VlRWj27Nkn81YYp7HtdYTwPV2qjE0zA",
+        authDomain: "mylive-dev.firebaseapp.com",
+        databaseURL: "https://mylive-dev.firebaseio.com",
+        projectId: "mylive-dev",
+        storageBucket: "mylive-dev.appspot.com",
+        messagingSenderId: "612928247465"
     }
 };
 //# sourceMappingURL=/Users/shivam/Repositories/MyLive/src/src/src/environments/environment.js.map
@@ -2067,7 +2063,7 @@ __webpack_require__("../../../../zone.js/dist/zone.js");
 
 /***/ }),
 
-/***/ 1:
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("../../../../../src/main.ts");
@@ -2075,5 +2071,5 @@ module.exports = __webpack_require__("../../../../../src/main.ts");
 
 /***/ })
 
-},[1]);
+},[0]);
 //# sourceMappingURL=main.bundle.js.map
