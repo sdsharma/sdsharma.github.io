@@ -1,16 +1,16 @@
-webpackJsonp(["main"],{
+webpackJsonp([2],{
 
-/***/ "../../../../../src/$$_gendir lazy recursive":
+/***/ "../../../../../src async recursive":
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"./admin/admin.module": [
 		"../../../../../src/app/admin/admin.module.ts",
-		"admin.module"
+		0
 	],
 	"./new/new.module": [
 		"../../../../../src/app/new/new.module.ts",
-		"new.module"
+		1
 	]
 };
 function webpackAsyncContext(req) {
@@ -24,8 +24,8 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 module.exports = webpackAsyncContext;
+webpackAsyncContext.id = "../../../../../src async recursive";
 
 /***/ }),
 
@@ -427,7 +427,7 @@ function generateUUID() {
 }
 exports.generateUUID = generateUUID;
 function tConvert(time) {
-    time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+    time = time.match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
     if (time.length > 1) {
         time = time.slice(1);
         time[5] = +time[0] < 12 ? 'AM' : 'PM';
@@ -867,10 +867,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var effects_1 = __webpack_require__("../../../../@ngrx/effects/index.js");
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
 var rxjs_1 = __webpack_require__("../../../../rxjs/Rx.js");
-__webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
-__webpack_require__("../../../../rxjs/_esm5/add/operator/switchMap.js");
-__webpack_require__("../../../../rxjs/_esm5/add/operator/catch.js");
-__webpack_require__("../../../../rxjs/_esm5/add/observable/of.js");
+__webpack_require__("../../../../rxjs/add/operator/map.js");
+__webpack_require__("../../../../rxjs/add/operator/switchMap.js");
+__webpack_require__("../../../../rxjs/add/operator/catch.js");
+__webpack_require__("../../../../rxjs/add/observable/of.js");
 var http_1 = __webpack_require__("../../../http/@angular/http.es5.js");
 var appActions_1 = __webpack_require__("../../../../../src/app/store/actions/appActions.ts");
 var auth_1 = __webpack_require__("../../../../angularfire2/auth.js");
@@ -2067,7 +2067,7 @@ __webpack_require__("../../../../zone.js/dist/zone.js");
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("../../../../../src/main.ts");
@@ -2075,5 +2075,5 @@ module.exports = __webpack_require__("../../../../../src/main.ts");
 
 /***/ })
 
-},[0]);
+},[1]);
 //# sourceMappingURL=main.bundle.js.map
