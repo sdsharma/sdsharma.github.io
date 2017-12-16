@@ -155,13 +155,13 @@ var NewBusinessComponent = /** @class */ (function () {
         if (this.model.valid && this.logo) {
             var submissionModel = {
                 businessHours: {
-                    monday: this.model.value.mondayStart + ' - ' + this.model.value.mondayEnd,
-                    tuesday: this.model.value.tuesdayStart + ' - ' + this.model.value.tuesdayEnd,
-                    wednesday: this.model.value.wednesdayStart + ' - ' + this.model.value.wednesdayEnd,
-                    thursday: this.model.value.thursdayStart + ' - ' + this.model.value.thursdayEnd,
-                    friday: this.model.value.fridayStart + ' - ' + this.model.value.fridayEnd,
-                    saturday: this.model.value.satudayStart + ' - ' + this.model.value.saturdayEnd,
-                    sunday: this.model.value.sundayStart + ' - ' + this.model.value.sundayEnd,
+                    monday: functions_1.tConvert(this.model.value.mondayStart) + ' - ' + functions_1.tConvert(this.model.value.mondayEnd),
+                    tuesday: functions_1.tConvert(this.model.value.tuesdayStart) + ' - ' + functions_1.tConvert(this.model.value.tuesdayEnd),
+                    wednesday: functions_1.tConvert(this.model.value.wednesdayStart) + ' - ' + functions_1.tConvert(this.model.value.wednesdayEnd),
+                    thursday: functions_1.tConvert(this.model.value.thursdayStart) + ' - ' + functions_1.tConvert(this.model.value.thursdayEnd),
+                    friday: functions_1.tConvert(this.model.value.fridayStart) + ' - ' + functions_1.tConvert(this.model.value.fridayEnd),
+                    saturday: functions_1.tConvert(this.model.value.saturdayStart) + ' - ' + functions_1.tConvert(this.model.value.saturdayEnd),
+                    sunday: functions_1.tConvert(this.model.value.sundayStart) + ' - ' + functions_1.tConvert(this.model.value.sundayEnd),
                 },
                 logo_url: this.logo || null,
                 longitude: this.longitude,
@@ -183,13 +183,13 @@ var NewBusinessComponent = /** @class */ (function () {
             info.push(submissionModel).then(function (item) {
                 var clientModel = {
                     businessHours: {
-                        monday: _this.model.value.mondayStart + ' - ' + _this.model.value.mondayEnd,
-                        tuesday: _this.model.value.tuesdayStart + ' - ' + _this.model.value.tuesdayEnd,
-                        wednesday: _this.model.value.wednesdayStart + ' - ' + _this.model.value.wednesdayEnd,
-                        thursday: _this.model.value.thursdayStart + ' - ' + _this.model.value.thursdayEnd,
-                        friday: _this.model.value.fridayStart + ' - ' + _this.model.value.fridayEnd,
-                        saturday: _this.model.value.satudayStart + ' - ' + _this.model.value.saturdayEnd,
-                        sunday: _this.model.value.sundayStart + ' - ' + _this.model.value.sundayEnd,
+                        monday: functions_1.tConvert(_this.model.value.mondayStart) + ' - ' + functions_1.tConvert(_this.model.value.mondayEnd),
+                        tuesday: functions_1.tConvert(_this.model.value.tuesdayStart) + ' - ' + functions_1.tConvert(_this.model.value.tuesdayEnd),
+                        wednesday: functions_1.tConvert(_this.model.value.wednesdayStart) + ' - ' + functions_1.tConvert(_this.model.value.wednesdayEnd),
+                        thursday: functions_1.tConvert(_this.model.value.thursdayStart) + ' - ' + functions_1.tConvert(_this.model.value.thursdayEnd),
+                        friday: functions_1.tConvert(_this.model.value.fridayStart) + ' - ' + functions_1.tConvert(_this.model.value.fridayEnd),
+                        saturday: functions_1.tConvert(_this.model.value.saturdayStart) + ' - ' + functions_1.tConvert(_this.model.value.saturdayEnd),
+                        sunday: functions_1.tConvert(_this.model.value.sundayStart) + ' - ' + functions_1.tConvert(_this.model.value.sundayEnd),
                     },
                     category: _this.model.value.category,
                     isOrg: false,
